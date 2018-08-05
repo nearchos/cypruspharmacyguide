@@ -1,0 +1,26 @@
+
+/* For generic page styles. Not for sliders. */
+
+body {background:#F6F6F6;font:normal 0.9em Arial; margin:0; padding:0; padding-bottom:20px;}
+h1 {font:bold 3.0em Calibri;display:inline;}
+h2 {font:bold 2em Calibri;display:inline;}
+h3 {font:bold 1.6em Calibri;display:inline;}
+li {font:1.4em Calibri;}
+p {font:1.4em Calibri;}
+.div1, .div2 {width:1000px;margin:0 auto;}
+.div1 {margin-top:30px;margin-bottom:60px;text-align:center;line-height:20px;}
+.div1 P {font-size:18px;}
+.div1 a, .div2 a {color:#007700;}
+.div2 {margin-top:20px;}
+.div2 li {padding-top:6px;padding-bottom:6px;}
+.green {color:Green;}
+.cn {font-family: "Courier New", Georgia;}
+#status {display:inline-block; margin-left:26px;line-height:50px;height:50px;vertical-align:middle;}
+
+.code
+{
+    border: dashed 1px #BCBCCB; padding:8px 12px; background-color: #F3F3F9; white-space:pre; font-family:"Courier New", Georgia;
+    font-size:12px; margin:6px 0;overflow:auto; 
+}
+
+img { border: 0; }

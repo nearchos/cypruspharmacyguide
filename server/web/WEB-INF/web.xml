@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <!-- Services -->
+    <servlet>
+        <servlet-name>suggest-pharmacy-coordinates</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.services.SuggestPharmacyCoordinates</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>suggest-pharmacy-coordinates</servlet-name>
+        <url-pattern>/services/suggest-pharmacy-coordinates</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>log-nearby-search</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.services.LogNearbySearch</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>log-nearby-search</servlet-name>
+        <url-pattern>/services/log-nearby-search</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>log-event</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.json.LogEventServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>log-event</servlet-name>
+        <url-pattern>/services/log-event</url-pattern>
+    </servlet-mapping>
+    <!-- End of Services-->
+
+    <!-- Admin servlets -->
+
+    <!--Cities...-->
+    <servlet>
+        <servlet-name>add-city</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.admin.EditCityServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>add-city</servlet-name>
+        <url-pattern>/admin/add-city</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CitiesServlet</servlet-name>
+        <jsp-file>/admin/cities.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CitiesServlet</servlet-name>
+        <url-pattern>/admin/cities</url-pattern>
+    </servlet-mapping>
+
+    <!--Localities-->
+    <servlet>
+        <servlet-name>add-locality</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.admin.EditLocalityServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>add-locality</servlet-name>
+        <url-pattern>/admin/add-locality</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LocalitiesServlet</servlet-name>
+        <jsp-file>/admin/localities.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LocalitiesServlet</servlet-name>
+        <url-pattern>/admin/localities</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LocalityServlet</servlet-name>
+        <jsp-file>/admin/locality.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LocalityServlet</servlet-name>
+        <url-pattern>/admin/locality</url-pattern>
+    </servlet-mapping>
+
+    <!--Pharmacies-->
+    <servlet>
+        <servlet-name>PharmaciesServlet</servlet-name>
+        <jsp-file>/admin/pharmacies.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PharmaciesServlet</servlet-name>
+        <url-pattern>/admin/pharmacies</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PharmacyServlet</servlet-name>
+        <jsp-file>/admin/pharmacy.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PharmacyServlet</servlet-name>
+        <url-pattern>/admin/pharmacy</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditPharmacyServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.admin.EditPharmacyServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EditPharmacyServlet</servlet-name>
+        <url-pattern>/admin/add-pharmacy</url-pattern>
+    </servlet-mapping>
+
+    <!--On-Calls-->
+    <servlet>
+        <servlet-name>OnCallsServlet</servlet-name>
+        <jsp-file>/admin/on-calls.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OnCallsServlet</servlet-name>
+        <url-pattern>/admin/on-calls</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OnCallServlet</servlet-name>
+        <jsp-file>/admin/on-call.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OnCallServlet</servlet-name>
+        <url-pattern>/admin/on-call</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditOnCallServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.admin.EditOnCallServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EditOnCallServlet</servlet-name>
+        <url-pattern>/admin/add-on-call</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditOnCallsServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.admin.EditOnCallsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EditOnCallsServlet</servlet-name>
+        <url-pattern>/admin/add-on-calls</url-pattern>
+    </servlet-mapping>
+
+    <!--Reports-->
+    <servlet>
+        <servlet-name>DailyReportServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.admin.DailyReportServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DailyReportServlet</servlet-name>
+        <url-pattern>/admin/daily-report</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>WeeklyReportServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.admin.WeeklyReportServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>WeeklyReportServlet</servlet-name>
+        <url-pattern>/admin/weekly-report</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ReportsServlet</servlet-name>
+        <jsp-file>/admin/reports.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ReportsServlet</servlet-name>
+        <url-pattern>/admin/reports</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RequestReportServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.admin.RequestReportServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RequestReportServlet</servlet-name>
+        <url-pattern>/admin/request-report</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateReportWorkerServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.tasks.ReportWorkerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CreateReportWorkerServlet</servlet-name>
+        <url-pattern>/tasks/create-report-worker</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ReportServlet</servlet-name>
+        <jsp-file>/admin/report.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ReportServlet</servlet-name>
+        <url-pattern>/admin/report</url-pattern>
+    </servlet-mapping>
+
+    <!--Admin console-->
+    <servlet>
+        <servlet-name>AdminIndexServlet</servlet-name>
+        <jsp-file>/admin/index.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminIndexServlet</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminServlet</servlet-name>
+        <jsp-file>/admin/admin.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/admin/admin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteOldEntriesServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.admin.DeleteOldEntriesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteOldEntriesServlet</servlet-name>
+        <url-pattern>/admin/delete-old-entries</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InitCitiesServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.admin.InitCitiesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>InitCitiesServlet</servlet-name>
+        <url-pattern>/admin/init-cities</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InitLocalitiesServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.admin.InitLocalitiesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>InitLocalitiesServlet</servlet-name>
+        <url-pattern>/admin/init-localities</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InitPharmaciesServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.admin.InitPharmaciesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>InitPharmaciesServlet</servlet-name>
+        <url-pattern>/admin/init-pharmacies</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InitOnCallsServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.admin.InitOnCallsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>InitOnCallsServlet</servlet-name>
+        <url-pattern>/admin/init-on-calls</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ParametersServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.admin.ParametersServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ParametersServlet</servlet-name>
+        <url-pattern>/admin/parameters</url-pattern>
+    </servlet-mapping>
+
+    <!-- End of Admin servlets -->
+
+    <!-- Stats servlets-->
+    <servlet>
+        <servlet-name>MostActiveUsersServlet</servlet-name>
+        <jsp-file>/stats/most-active-users.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MostActiveUsersServlet</servlet-name>
+        <url-pattern>/stats/most-active-users</url-pattern>
+    </servlet-mapping>
+    <!--End of Stats Servlets-->
+
+    <!--Mobile servlets-->
+    <servlet>
+        <servlet-name>MobileIndexServlet</servlet-name>
+        <jsp-file>/mobile/app.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MobileIndexServlet</servlet-name>
+        <url-pattern>/mobile</url-pattern>
+    </servlet-mapping>
+    <!--End of Mobile servlets-->
+
+    <!--Desktop servlets-->
+    <servlet>
+        <servlet-name>DesktopIndexServlet</servlet-name>
+        <jsp-file>/web/index.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DesktopIndexServlet</servlet-name>
+        <url-pattern>/web/map</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HeatmapIndexServlet</servlet-name>
+        <jsp-file>/web/heatmap.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HeatmapIndexServlet</servlet-name>
+        <url-pattern>/web/heatmap</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>WwwIndexServlet</servlet-name>
+        <jsp-file>/www/index.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>WwwIndexServlet</servlet-name>
+        <url-pattern>/www</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>WwwMobileIndexServlet</servlet-name>
+        <jsp-file>/www/mobile/index.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>WwwMobileIndexServlet</servlet-name>
+        <url-pattern>/www/mobile</url-pattern>
+    </servlet-mapping>
+
+    <!--End of Desktop servlets-->
+
+    <!--JSON services-->
+
+    <servlet>
+        <servlet-name>UpdateAllJsonServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.json.UpdateAllJsonServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateAllJsonServlet</servlet-name>
+        <url-pattern>/json/update-all</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetLogsJsonServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.json.GetLogsJsonServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetLogsJsonServlet</servlet-name>
+        <url-pattern>/json/get-logs</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteLogsJsonServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.json.DeleteLogsJsonServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteLogsJsonServlet</servlet-name>
+        <url-pattern>/json/delete-logs</url-pattern>
+    </servlet-mapping>
+
+    <!--End of JSON services-->
+
+    <!--Security constraints-->
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/json/*</url-pattern>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/admin/*</url-pattern>
+            <url-pattern>/map/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <!--End of Security constraints-->
+
+    <!--HeatMap-->
+    <servlet>
+        <servlet-name>HeatMapServlet</servlet-name>
+        <jsp-file>/map/index.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HeatMapServlet</servlet-name>
+        <url-pattern>/map</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HeatMap-Pharmacies-Servlet</servlet-name>
+        <jsp-file>/map/map-pharmacies.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HeatMap-Pharmacies-Servlet</servlet-name>
+        <url-pattern>/map-pharmacies</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HeatMap-Logs-Servlet</servlet-name>
+        <jsp-file>/map/map-logs.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HeatMap-Logs-Servlet</servlet-name>
+        <url-pattern>/map-logs</url-pattern>
+    </servlet-mapping>
+
+    <!--End of HeatMap-->
+
+</web-app>

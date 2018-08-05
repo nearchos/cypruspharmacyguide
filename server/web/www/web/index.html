@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
+		<link rel="shortcut icon" href="favicon.ico" />
+
+		<title>Cyprus Pharmacy Guide</title>
+
+		<script>
+			function forwardmobile()
+			{
+				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) )
+				{
+					self.location="../mobile";
+				}
+			}
+		</script>
+
+		<link rel="stylesheet" type="text/css" href="bubbles.css">
+	</head>
+
+	<body style="background-image: url(../images/background_stripes.png);" onload="forwardmobile();">
+
+		<div>
+			<a href="https://play.google.com/store/apps/details?id=com.aspectsense.pharmacyguidecy">
+				<img alt="Android app on Google Play"
+					style="border: 0;"
+					width="128"
+					src="../images/google_play.png" />
+			</a>
+		</div>
+
+		<div style="display:block;
+					/*set the div in the bottom right corner*/
+					position:absolute;
+					bottom:0;
+					right:0;
+					padding: 4px;">
+
+			<span style="font:bold 14px Tahoma;">
+				Developed by <a href="http://aspectsense.com" target="_blank"> <img src="../images/aspectsense_imified2.png" alt="aspectsense.com" style="border:0; vertical-align:middle;"/></a> &copy; 2013
+			</span>
+
+		</div>
+
+		<div style="background-image: url(../images/nexus4.png);
+				background-repeat:no-repeat;
+				width:320px; height: 630px;
+				position: absolute;
+				left: 50%; top: 50%;
+				margin: -315px 0 0 -160px;
+				box-sizing: border-box;
+				padding: 77px 19px 87px 19px;">
+
+				<iframe
+					style="width:278px; height:462px;"
+					src="http://cypruspharmacyguide.appspot.com/mobile">
+					Please use a browser that supports frames
+				</iframe>
+
+				<div id="bubble" class="triangle-border right" style="width:200px; position:relative; left: -260px; top: -300px; font-family: Calibri; font-size:1.2em; font-weight:bold;">
+				<span>Live app! Try it out...</span>
+				<br/>
+				<p style="text-align: right; margin: 0px 0px 0px 0px;"><a href="javascript:void(0);" onclick="javascript:document.getElementById('bubble').style.display='none';"><small>dismiss</small></a></p>
+				</div>
+
+		</div>
+
+		</body>
+
+</html>

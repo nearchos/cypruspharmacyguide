@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+    <cron>
+        <url>/admin/weekly-report</url>
+        <description>Mail out a weekly report</description>
+        <schedule>every monday 02:30</schedule>
+        <timezone>Asia/Nicosia</timezone>
+    </cron>
+    <cron>
+        <url>/admin/daily-report</url>
+        <description>Daily, delete oldest entries and mail out a report</description>
+        <schedule>every day 02:40</schedule>
+        <timezone>Asia/Nicosia</timezone>
+    </cron>
+</cronentries>
