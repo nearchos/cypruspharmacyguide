@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+    https://developers.google.com/admob/android/quick-start
+    -->
+    <string name="ad_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string> <!-- Sample AdMob App ID for debugging -->
+    <!--
+    https://developers.google.com/admob/android/banner
+    -->
+    <string name="ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string> <!-- Sample AdMob Unit ID for debugging -->
+
+</resources>

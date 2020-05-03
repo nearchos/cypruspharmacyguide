@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">Cyprus Pharmacy Guide</string>
+
+    <string name="On_call_now">On call now</string>
+    <string name="Next_day">Next day</string>
+    <string name="All">All</string>
+
+    <string name="Fetching_updates">Fetching updates …</string>
+    <string name="Network_error">Network error</string>
+    <string name="Already_up_to_date">Already up to date</string>
+    <plurals name="Updates_fetched">
+        <item quantity="one">%d update fetched</item>
+        <item quantity="other">%d updates fetched</item>
+    </plurals>
+
+    <string name="Pharmacy_hours">Pharmacy hours</string>
+    <string name="Summer_period">Summer period</string>
+    <string name="Winter_period">Winter period</string>
+    <string name="summer_dates">May 1st to Sep 30th</string>
+    <string name="winter_dates">Oct 1st to Apr 30th</string>
+    <string name="summer_schedule">Mon: 9:00&#8211;1:30 &amp; 4:00&#8211;7:30\nTue: 9:00&#8211;1:30 &amp; 4:00&#8211;7:30\nWed: 9:00&#8211;1:30\nThu: 9:00&#8211;1:30 &amp; 4:00&#8211;7:30\nFri: 9:00&#8211;1:30 &amp; 4:00&#8211;7:30\nSat: 9:00&#8211;1:30\nSun: closed\n\nOn call pharmacies open 8am to 11pm. Call ahead for service after 11pm.</string>
+    <string name="winter_schedule">Mon: 9:00&#8211;1:30 &amp; 3:00&#8211;6:30\nTue: 9:00&#8211;1:30 &amp; 3:00&#8211;6:30\nWed: 9:00&#8211;1:30\nThu: 9:00&#8211;1:30 &amp; 3:00&#8211;6:30\nFri: 9:00&#8211;1:30 &amp; 3:00&#8211;6:30\nSat: 9:00&#8211;1:30\nSun: closed\n\nOn call pharmacies open 8am to 10pm. Call ahead for service after 10pm.</string>
+
+    <string name="All_pharmacies">All pharmacies (might be closed now)</string>
+    <string name="All_pharmacies_currently_open">All pharmacies are currently open (closing at %1$s)</string>
+    <string name="On_call_tonight">On call tonight</string>
+    <string name="On_call_today">On call today</string>
+    <string name="On_call_tomorrow">On call tomorrow</string>
+    <string name="until_8am_next_morning">until 8am next morning</string>
+
+    <string name="Search">Search</string>
+    <string name="Synchronize">Synchronize</string>
+    <string name="Pharmacies_in_Greek">Pharmacies in Greek</string>
+    <string name="About">About</string>
+
+    <string name="Location_denied">Location denied. Centering at Nicosia.</string>
+    <string name="Allow">Allow</string>
+    <string name="Location_disabled">Location disabled. Centering at Nicosia.</string>
+    <string name="Enable">Enable</string>
+
+    <string name="Km">Km</string>
+    <string name="m">m</string>
+
+    <string name="Get_navigation_directions">Get navigation directions</string>
+    <string name="Call">Call</string>
+    <string name="Pharmacy">Pharmacy</string>
+    <string name="Current_location">Current location</string>
+
+    <string name="Loading_pharmacies">Loading pharmacies …</string>
+    <string name="No_matching_pharmacies">No matching pharmacies …</string>
+
+    <string name="Developed_by">Developed by</string>
+    <string name="Open_Source_Software">Open Source Software</string>
+    <string name="Version_with_name">Version %1$s</string>
+    <string name="Loved_the_app">Loved the app?</string>
+    <string name="Click_to_rate">Click to rate</string>
+    <string name="Tell_the_world">Tell the world!</string>
+    <string name="Share_with_your_friends">Share with your friends</string>
+    <string name="Install">Get the Cyprus Pharmacy Guide and find the most convenient pharmacies in Cyprus. Get it for free from Google Play at https://play.google.com/store/apps/details?id=com.aspectsense.pharmacyguidecy</string>
+    <string name="Share">Share</string>
+    <string name="No_apps_available_for_sharing">No apps available for sharing</string>
+
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--sync protocol-->
+    <!--todo nullify debug key before checking in to github -->
+    <string name="magic" translatable="false">e762ecf7–def1–49f4–937c-517700376674</string>
+
+</resources>

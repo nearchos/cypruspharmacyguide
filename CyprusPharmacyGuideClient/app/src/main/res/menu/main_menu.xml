@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/app_bar_menu_search"
+        android:title="@string/Search"
+        app:showAsAction="ifRoom"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+    <item
+        android:id="@+id/app_bar_menu_force_greek"
+        android:title="@string/Pharmacies_in_Greek"
+        android:checkable="true"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/app_bar_menu_synchronize"
+        android:title="@string/Synchronize"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/app_bar_menu_information"
+        android:title="@string/Pharmacy_hours"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/app_bar_menu_about"
+        android:title="@string/About"
+        app:showAsAction="never" />
+
+</menu>

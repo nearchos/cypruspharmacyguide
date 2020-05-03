@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/pharmacy_green</color>
+    <color name="colorPrimaryDark">@color/pharmacy_green_dark</color>
+    <color name="colorAccent">@color/bright_yellow</color>
+
+    <color name="pharmacy_green">#ff0c9e3f</color>
+    <color name="pharmacy_green_dark">#ff0c7e1f</color>
+    <color name="bright_yellow">#ffffff00</color>
+    <color name="black">#ff000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="gray">#ff707070</color>
+    <color name="light_gray">#ffb0b0b0</color>
+    <color name="very_light_gray">#ffe0e0e0</color>
+    <color name="very_light_blue">#7f00a0ef</color>
+
+</resources>

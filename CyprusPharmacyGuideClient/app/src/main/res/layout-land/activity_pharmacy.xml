@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityPharmacy">
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        app:adSize="SMART_BANNER"
+        app:adUnitId="@string/ad_unit_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toTopOf="@id/adView"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                tools:context=".MapsActivity" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/light_gray"
+                app:layout_constraintBottom_toTopOf="@id/buttonDialHome" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/nameTextView"
+                    android:transitionName="nameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="John Smith"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:padding="4dp"
+                    android:layout_margin="8dp"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/nameHorizontalLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/light_gray"
+                    app:layout_constraintTop_toBottomOf="@id/nameTextView" />
+
+                <TextView
+                    android:id="@+id/distanceTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    tools:text="12.3"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:transitionName="distanceTextView"
+                    app:layout_constraintBottom_toBottomOf="@id/addressDetailsTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/addressTextView" />
+
+                <TextView
+                    android:id="@+id/distanceUnitTextView"
+                    android:transitionName="distanceUnitTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Km"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintStart_toEndOf="@id/distanceTextView"
+                    app:layout_constraintBaseline_toBaselineOf="@id/distanceTextView" />
+
+                <ImageView
+                    android:contentDescription="@string/Call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_call_black_24dp"
+                    android:tint="@color/light_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/distanceUnitTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/buttonDialPharmacy" />
+
+                <Button
+                    android:id="@+id/buttonDialPharmacy"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    tools:text="99123456"
+                    android:drawableStart="@drawable/ic_local_pharmacy_black_24dp"
+                    android:drawableTint="@color/colorPrimary"
+                    android:drawablePadding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/addressDetailsTextView"
+                    android:layout_marginStart="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/buttonDialHome"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    tools:text="22123456"
+                    android:drawableStart="@drawable/ic_home_black_24dp"
+                    android:drawableTint="@color/colorPrimary"
+                    android:drawablePadding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/buttonDialPharmacy"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:id="@+id/phoneNumberHorizontalLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_gray"
+                    app:layout_constraintBottom_toTopOf="@id/buttonDialHome" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonDirections"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="64dp"
+                    android:contentDescription="@string/Get_navigation_directions"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_directions_black_24dp"
+                    android:tint="@color/colorPrimary"
+                    app:layout_constraintBottom_toTopOf="@id/phoneNumberHorizontalLine"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/addressTextView" />
+
+                <TextView
+                    android:id="@+id/addressDetailsTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="10dp"
+                    android:padding="4dp"
+                    android:paddingBottom="10dp"
+                    tools:text="123 Fake Street, #123"
+                    android:textSize="16sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toTopOf="@id/phoneNumberHorizontalLine"
+                    app:layout_constraintEnd_toStartOf="@id/imageButtonDirections"
+                    app:layout_constraintStart_toEndOf="@id/distanceUnitTextView" />
+
+                <TextView
+                    android:id="@+id/addressTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:padding="4dp"
+                    android:paddingBottom="10dp"
+                    tools:text="Just around the corner"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="italic"
+                    android:transitionName="addressTextView"
+                    app:layout_constraintBottom_toTopOf="@id/addressDetailsTextView"
+                    app:layout_constraintEnd_toStartOf="@id/imageButtonDirections"
+                    app:layout_constraintStart_toEndOf="@id/distanceUnitTextView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

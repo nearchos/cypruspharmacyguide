@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Οδηγός Φαρμακείων Κύπρου</string>
+    <string name="On_call_now">Τώρα</string>
+    <string name="Next_day">Επομένη</string>
+    <string name="All">Όλα</string>
+    <string name="Fetching_updates">Σύνδεση για ενημέρωση …</string>
+    <string name="Network_error">Σφάλμα Δικτύου</string>
+    <string name="Already_up_to_date">Δεν απαιτήθηκε ενημέρωση</string>
+    <plurals name="Updates_fetched">
+        <item quantity="one">Κατέβηκε %d ενημέρωση</item>
+        <item quantity="other">Κατέβηκαν %d ενημερώσεις</item>
+    </plurals>
+
+    <string name="Pharmacy_hours">Ωράριο φαρμακείων</string>
+    <string name="Summer_period">Καλοκαιρινή περίοδος</string>
+    <string name="Winter_period">Χειμερινή περίοδος</string>
+    <string name="summer_dates">1η Μάη με 30 Σεπ</string>
+    <string name="winter_dates">1η Οκτ με 30 Απρ</string>
+    <string name="summer_schedule">Δευ: 9:00&#8211;1:30 &amp; 4:00&#8211;7:30\nΤρι: 9:00&#8211;1:30 &amp; 4:00&#8211;7:30\nΤετ: 9:00&#8211;1:30\nΠεμ: 9:00&#8211;1:30 &amp; 4:00&#8211;7:30\nΠαρ: 9:00&#8211;1:30 &amp; 4:00&#8211;7:30\nΣαβ: 9:00&#8211;1:30\nΚυρ: κλειστά\n\nΔιημερεύοντα φαρμακεία ανοικτά 8πμ με 11μμ. Τηλεφωνείστε για εξυπηρέτηση μετά τις 11μμ.</string>
+    <string name="winter_schedule">Δευ: 9:00&#8211;1:30 &amp; 3:00&#8211;6:30\nΤρι: 9:00&#8211;1:30 &amp; 3:00&#8211;6:30\nΤετ: 9:00&#8211;1:30\nΠεμ: 9:00&#8211;1:30 &amp; 3:00&#8211;6:30\nΠαρ: 9:00&#8211;1:30 &amp; 3:00&#8211;6:30\nΣαβ: 9:00&#8211;1:30\nΚυρ: κλειστά\n\nΔιημερεύοντα φαρμακεία ανοικτά 8πμ με 10μμ. Τηλεφωνείστε για εξυπηρέτηση μετά τις 10 μμ.</string>
+
+    <string name="All_pharmacies">Όλα τα φαρμακεία (μπορεί να είναι κλειστά τώρα)</string>
+    <string name="All_pharmacies_currently_open">Όλα τα φαρμακεία είναι ανοικτά αυτή τη στιγμή (κλείνουν στις %1$s)</string>
+    <string name="On_call_tonight">Διημερεύοντα απόψε</string>
+    <string name="On_call_today">Διημερεύοντα σήμερα</string>
+    <string name="On_call_tomorrow">Διημερεύοντα αύριο</string>
+    <string name="until_8am_next_morning">μέχρι τις 8πμ το επόμενο πρωί</string>
+    <string name="Search">Αναζήτηση</string>
+    <string name="Synchronize">Συγχρονισμός</string>
+    <string name="Pharmacies_in_Greek">Φαρμακεία στα ελληνικά</string>
+    <string name="About">Σχετικά</string>
+    <string name="Location_denied">Απόρριψη τοποθεσίας. Κεντράρισμα σε Λευκωσία.</string>
+    <string name="Allow">Επέτρεψε</string>
+    <string name="Location_disabled">Τοποθεσία ανενεργή. Κεντράρισμα σε Λευκωσία.</string>
+    <string name="Enable">Ενεργοποίησε</string>
+    <string name="Km">Χμ</string>
+    <string name="m">μ</string>
+    <string name="Get_navigation_directions">Οδηγίες</string>
+    <string name="Call">Τηλεφώνα</string>
+    <string name="Pharmacy">Φαρμακείο</string>
+    <string name="Current_location">Τρέχων τοποθεσία</string>
+    <string name="Loading_pharmacies">Φόρτωση φαρμακείων …</string>
+    <string name="No_matching_pharmacies">Δεν βρέθηκαν φαρμακεία …</string>
+    <string name="Developed_by">Αναπτύχθηκε από</string>
+    <string name="Open_Source_Software">Λογισμικό Ανοικτού Κώδικα</string>
+    <string name="Version_with_name">Έκδοση %1$s</string>
+    <string name="Loved_the_app">Σου αρέσει η εφαρμογή;</string>
+    <string name="Click_to_rate">Βαθμολόγησε την</string>
+    <string name="Tell_the_world">Διάδωσε το!</string>
+    <string name="Share_with_your_friends">Μοιράστου το με τους φίλους σου</string>
+    <string name="Install">Κατέβασε τον Οδηγό Φαρμακείων Κύπρου και βρες τα πιο βολικά φαρμακεία στην Κύπρο. Κατέβασε το δωρεάν από το Google Play στο https://play.google.com/store/apps/details?id=com.aspectsense.pharmacyguidecy</string>
+    <string name="Share">Μοιράστου το</string>
+    <string name="No_apps_available_for_sharing">Δεν βρέθηκε εφαρμογή για μοίρασμα</string>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.OnCallNowFragment">
+
+    <com.aspectsense.pharmacyguidecy.ui.ScrollingTextView
+        android:id="@+id/onCallNowTextView"
+        android:text="@string/On_call_now"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:drawableEnd="@drawable/ic_open_in_new_black_24dp"
+        android:drawableTint="@color/pharmacy_green"
+        android:background="@color/very_light_gray"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:padding="10dp"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/onCallNowRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/onCallNowTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
