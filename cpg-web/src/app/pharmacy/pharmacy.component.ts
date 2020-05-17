@@ -3,6 +3,7 @@ import { FlatPharmacy } from '../flat-pharmacy';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 import { Platform } from '@angular/cdk/platform';
+import Utils from '../utils';
 
 @Component({
   selector: 'app-pharmacy',
@@ -41,5 +42,9 @@ export class PharmacyComponent implements OnInit {
         flatPharmacy.lat, flatPharmacy.lng, position.coords.latitude, position.coords.longitude
       ));
     });
+  }
+
+  public toGreeklish(greek: string): string {
+    return Utils.toGreeklish(greek);
   }
 }

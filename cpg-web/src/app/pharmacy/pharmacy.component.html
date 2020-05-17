@@ -35,11 +35,11 @@
         <span *ngIf="flatPharmacy.localityNameEl != flatPharmacy.cityNameEl">, {{flatPharmacy.localityNameEl}}</span>, {{flatPharmacy.cityNameEl}}
       </p>
       <p class="address-en">
-        {{flatPharmacy.address}}, CY-{{flatPharmacy.addressPostalCode}}
+        {{toGreeklish(flatPharmacy.address)}}, CY-{{flatPharmacy.addressPostalCode}}
         <span *ngIf="flatPharmacy.localityNameEn != flatPharmacy.cityNameEn">, {{flatPharmacy.localityNameEn}}</span>, {{flatPharmacy.cityNameEn}}
       </p>
 
-      <p style="text-align: right;">
+      <p style="text-align: left;">
         <a href="{{coreMapUrl}}={{flatPharmacy.lat}},{{flatPharmacy.lng}}">
           <button mat-button matTooltip="Show Map"><mat-icon>map</mat-icon>&nbsp;Map</button>
         </a>
@@ -49,7 +49,7 @@
     <mat-divider></mat-divider>
 
     <div class="pharmacy-details-container">
-      <p style="text-align: right;">
+      <p style="text-align: left;">
         <a href="tel:{{flatPharmacy.phoneBusiness}}">
           <button mat-button matTooltip="Call pharmacy"><mat-icon>local_pharmacy</mat-icon>&nbsp;{{flatPharmacy.phoneBusiness}}</button>
         </a>
