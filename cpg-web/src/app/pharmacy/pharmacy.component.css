@@ -1,9 +1,68 @@
-mat-card-title {
-  color: darkgreen;
+/*mat-card-title {*/
+/*  color: darkgreen;*/
+/*}*/
+
+/*mat-card-content {*/
+/*  margin-left: 16px;*/
+/*}*/
+
+/*mat-icon {*/
+/*  vertical-align: center;*/
+/*}*/
+
+.pharmacy-distance-container {
+  float: left;
+  text-align: right;
+  min-width: 70px;
+  margin-top: 16px;
+  margin-left: 10px;
 }
 
-mat-card-content {
+.pharmacy-distance-text {
+  color: green;
+  font-size: x-large;
+}
+
+.pharmacy-distance-text-km {
+  color: darkgreen;
+  font-size: small;
+}
+
+.pharmacy-details-container {
+  overflow: hidden;
+  margin-right: 16px;
+}
+
+.pharmacy-item {
+  margin-top: 16px;
+}
+
+.name-el {
   margin-left: 16px;
+  color: darkgreen;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.name-en {
+  margin-left: 16px;
+  color: dimgrey;
+  font-size: medium;
+}
+
+.address-el {
+  font-size: initial;
+  font-weight: 400;
+}
+
+.address-en {
+  font-size: initial;
+  font-weight: 300;
+}
+
+mat-divider {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 mat-icon {
@@ -20,4 +79,9 @@ a {
 
 .nav-action {
   text-align: right;
+}
+
+.pharmacy-label {
+  margin: 16px;
+  font-size: large;
 }

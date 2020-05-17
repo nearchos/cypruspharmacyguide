@@ -43,6 +43,10 @@
   font-weight: 400;
 }
 
+.phone-numbers {
+  text-align: right;
+}
+
 mat-divider {
   margin-top: 8px;
   margin-bottom: 8px;
@@ -54,6 +58,10 @@ mat-icon {
 
 p {
   margin-left: 16px;
+}
+
+a {
+  color: black;
 }
 
 .nav-action {

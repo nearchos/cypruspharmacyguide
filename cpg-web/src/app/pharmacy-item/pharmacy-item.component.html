@@ -21,7 +21,15 @@
     <p class="name-en">{{flatPharmacy.nameEn}}</p>
     <p class="address">
       {{flatPharmacy.address}}, CY-{{flatPharmacy.addressPostalCode}}
-      <span *ngIf="flatPharmacy.localityNameEn != flatPharmacy.cityNameEn">, {{flatPharmacy.localityNameEn}}</span>, {{flatPharmacy.cityNameEn}}
+      <span *ngIf="flatPharmacy.localityNameEl != flatPharmacy.cityNameEl">, {{flatPharmacy.localityNameEl}}</span>, {{flatPharmacy.cityNameEl}}
+    </p>
+    <p class="phone-numbers">
+      <a href="tel:{{flatPharmacy.phoneBusiness}}">
+        <button mat-button matTooltip="Call pharmacy"><mat-icon>local_pharmacy</mat-icon>&nbsp;{{flatPharmacy.phoneBusiness}}</button>
+      </a>
+      <a href="tel:{{flatPharmacy.phoneHome}}">
+        <button mat-button matTooltip="Call home"><mat-icon>home</mat-icon>&nbsp;{{flatPharmacy.phoneHome}}</button>
+      </a>
     </p>
   </div>
 

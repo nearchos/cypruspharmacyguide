@@ -1,30 +1,66 @@
 <button mat-button matTooltip="Back to pharmacies" routerLink="/pharmacies"><mat-icon>arrow_back</mat-icon> All pharmacies</button>
 
-<div *ngFor="let flatPharmacy of flatPharmacies">
-  <mat-card class="pharmacy-card">
-    <mat-card-header>
-      <mat-card-title>{{flatPharmacy.nameEl}}</mat-card-title>
-      <mat-card-subtitle>
-        <p>{{flatPharmacy.nameEn}}</p>
+<mat-divider></mat-divider>
+
+<div class="pharmacy-item" *ngFor="let flatPharmacy of flatPharmacies">
+
+  <div class="pharmacy-details-container">
+    <p class="name-el">{{flatPharmacy.nameEl}}</p>
+    <p class="name-en">{{flatPharmacy.nameEn}}</p>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div>
+
+    <div class="pharmacy-distance-container" *ngIf="flatPharmacy.distance > 0">
+      <span *ngIf="flatPharmacy.distance >= 100000; then tooFar else elseBlock"></span>
+      <ng-template #tooFar>
+        <span class="pharmacy-distance-text">&gt;99.9</span>&nbsp;<span class="pharmacy-distance-text-km">Km</span>
+      </ng-template>
+      <ng-template #elseBlock>
+        <span *ngIf="flatPharmacy.distance >= 1000; then distanceKm else distanceM"></span>
+        <ng-template #distanceKm>
+          <span class="pharmacy-distance-text">{{flatPharmacy.distance / 1000 | number: '1.1-1'}}</span>&nbsp;<span class="pharmacy-distance-text-km">Km</span>
+        </ng-template>
+        <ng-template #distanceM>
+          <span class="pharmacy-distance-text">{{flatPharmacy.distance | number: '1.0-0'}}</span>&nbsp;<span class="pharmacy-distance-text-km">m</span>
+        </ng-template>
+      </ng-template>
+    </div>
+
+    <div class="pharmacy-details-container">
+      <p class="address-el">
+        {{flatPharmacy.address}}, CY-{{flatPharmacy.addressPostalCode}}
+        <span *ngIf="flatPharmacy.localityNameEl != flatPharmacy.cityNameEl">, {{flatPharmacy.localityNameEl}}</span>, {{flatPharmacy.cityNameEl}}
+      </p>
+      <p class="address-en">
         {{flatPharmacy.address}}, CY-{{flatPharmacy.addressPostalCode}}
         <span *ngIf="flatPharmacy.localityNameEn != flatPharmacy.cityNameEn">, {{flatPharmacy.localityNameEn}}</span>, {{flatPharmacy.cityNameEn}}
-      </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      {{flatPharmacy.addressDetails}}
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <a href="tel:{{flatPharmacy.phoneBusiness}}">
-        <button mat-button matTooltip="Call pharmacy"><mat-icon>local_pharmacy</mat-icon>&nbsp;{{flatPharmacy.phoneBusiness}}</button>
-      </a>
-      <a href="tel:{{flatPharmacy.phoneHome}}">
-        <button mat-button matTooltip="Call home"><mat-icon>home</mat-icon>&nbsp;{{flatPharmacy.phoneHome}}</button>
-      </a>
-      <a href="{{coreMapUrl}}={{flatPharmacy.lat}},{{flatPharmacy.lng}}">
-        <button mat-button matTooltip="Show Map"><mat-icon>map</mat-icon>&nbsp;Map</button>
-      </a>
-    </mat-card-actions>
-  </mat-card>
+      </p>
+
+      <p style="text-align: right;">
+        <a href="{{coreMapUrl}}={{flatPharmacy.lat}},{{flatPharmacy.lng}}">
+          <button mat-button matTooltip="Show Map"><mat-icon>map</mat-icon>&nbsp;Map</button>
+        </a>
+      </p>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="pharmacy-details-container">
+      <p style="text-align: right;">
+        <a href="tel:{{flatPharmacy.phoneBusiness}}">
+          <button mat-button matTooltip="Call pharmacy"><mat-icon>local_pharmacy</mat-icon>&nbsp;{{flatPharmacy.phoneBusiness}}</button>
+        </a>
+        <a href="tel:{{flatPharmacy.phoneHome}}">
+          <button mat-button matTooltip="Call home"><mat-icon>home</mat-icon>&nbsp;{{flatPharmacy.phoneHome}}</button>
+        </a>
+      </p>
+    </div>
+
+  </div>
+
 </div>
 
 <mat-divider></mat-divider>

@@ -36,5 +36,10 @@ export class PharmacyComponent implements OnInit {
       });
     });
     this.isAndroid = this.platform.ANDROID;
+    this.dataService.getLocation().subscribe(position => {
+      this.flatPharmacies.forEach(flatPharmacy => flatPharmacy.distance = DataService.getDistance(
+        flatPharmacy.lat, flatPharmacy.lng, position.coords.latitude, position.coords.longitude
+      ));
+    });
   }
 }
