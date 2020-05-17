@@ -1,0 +1,13 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <a routerLink="/" title="Home">
+      <img src="assets/favicon32.png" alt="{{title}}" class="logo-img"/>
+    </a>
+    <span>{{title}}</span>
+    <span class="toolbar-spacer"></span>
+    <button mat-button routerLink="/settings" title="Settings"><mat-icon>settings</mat-icon></button>
+    <button mat-button routerLink="/info" title="Settings"><mat-icon>info</mat-icon></button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

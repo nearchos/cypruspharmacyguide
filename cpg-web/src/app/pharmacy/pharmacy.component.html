@@ -1,0 +1,36 @@
+<button mat-button matTooltip="Back to pharmacies" routerLink="/pharmacies"><mat-icon>arrow_back</mat-icon> All pharmacies</button>
+
+<div *ngFor="let flatPharmacy of flatPharmacies">
+  <mat-card class="pharmacy-card">
+    <mat-card-header>
+      <mat-card-title>{{flatPharmacy.nameEl}}</mat-card-title>
+      <mat-card-subtitle>
+        <p>{{flatPharmacy.nameEn}}</p>
+        {{flatPharmacy.address}}, CY-{{flatPharmacy.addressPostalCode}}
+        <span *ngIf="flatPharmacy.localityNameEn != flatPharmacy.cityNameEn">, {{flatPharmacy.localityNameEn}}</span>, {{flatPharmacy.cityNameEn}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      {{flatPharmacy.addressDetails}}
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <a href="tel:{{flatPharmacy.phoneBusiness}}">
+        <button mat-button matTooltip="Call pharmacy"><mat-icon>local_pharmacy</mat-icon>&nbsp;{{flatPharmacy.phoneBusiness}}</button>
+      </a>
+      <a href="tel:{{flatPharmacy.phoneHome}}">
+        <button mat-button matTooltip="Call home"><mat-icon>home</mat-icon>&nbsp;{{flatPharmacy.phoneHome}}</button>
+      </a>
+      <a href="{{coreMapUrl}}={{flatPharmacy.lat}},{{flatPharmacy.lng}}">
+        <button mat-button matTooltip="Show Map"><mat-icon>map</mat-icon>&nbsp;Map</button>
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<mat-divider></mat-divider>
+
+<app-android-app *ngIf="isAndroid"></app-android-app>
+
+<mat-divider></mat-divider>
+
+<app-aspectsense></app-aspectsense>

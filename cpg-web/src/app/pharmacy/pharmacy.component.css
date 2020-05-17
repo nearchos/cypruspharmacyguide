@@ -1,0 +1,23 @@
+mat-card-title {
+  color: darkgreen;
+}
+
+mat-card-content {
+  margin-left: 16px;
+}
+
+mat-icon {
+  vertical-align: center;
+}
+
+p {
+  margin-left: 16px;
+}
+
+a {
+  color: black;
+}
+
+.nav-action {
+  text-align: right;
+}

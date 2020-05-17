@@ -1,0 +1,30 @@
+<div class="pharmacy-item" routerLink="/pharmacy/{{flatPharmacy.ID}}" matRipple>
+
+  <div class="pharmacy-distance-container" *ngIf="flatPharmacy.distance > 0">
+    <span *ngIf="flatPharmacy.distance >= 100000; then tooFar else elseBlock"></span>
+    <ng-template #tooFar>
+      <span class="pharmacy-distance-text">&gt;99.9</span>&nbsp;<span class="pharmacy-distance-text-km">Km</span>
+    </ng-template>
+    <ng-template #elseBlock>
+      <span *ngIf="flatPharmacy.distance >= 1000; then distanceKm else distanceM"></span>
+      <ng-template #distanceKm>
+        <span class="pharmacy-distance-text">{{flatPharmacy.distance / 1000 | number: '1.1-1'}}</span>&nbsp;<span class="pharmacy-distance-text-km">Km</span>
+      </ng-template>
+      <ng-template #distanceM>
+        <span class="pharmacy-distance-text">{{flatPharmacy.distance | number: '1.0-0'}}</span>&nbsp;<span class="pharmacy-distance-text-km">m</span>
+      </ng-template>
+    </ng-template>
+  </div>
+
+  <div class="pharmacy-details-container">
+    <p class="name-el">{{flatPharmacy.nameEl}}</p>
+    <p class="name-en">{{flatPharmacy.nameEn}}</p>
+    <p class="address">
+      {{flatPharmacy.address}}, CY-{{flatPharmacy.addressPostalCode}}
+      <span *ngIf="flatPharmacy.localityNameEn != flatPharmacy.cityNameEn">, {{flatPharmacy.localityNameEn}}</span>, {{flatPharmacy.cityNameEn}}
+    </p>
+  </div>
+
+</div>
+
+<mat-divider></mat-divider>

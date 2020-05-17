@@ -1,0 +1,46 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        All pharmacies.
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-pharmacy-hours></app-pharmacy-hours>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<div>
+  <form class="search-form">
+    <mat-form-field class="search-full-width">
+      <input matInput
+             placeholder="Find by name"
+             aria-label="Name"
+             type="search"
+             [matAutocomplete]="auto"
+             [formControl]="pharmaciesCtrl">
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let flatPharmacy of filteredFlatPharmacies | async" [value]="flatPharmacy.nameEl" routerLink="/pharmacy/{{flatPharmacy.ID}}">
+            <span class="mat-body-strong">{{flatPharmacy.nameEl}}</span> @
+            <small>{{flatPharmacy.address}}, {{flatPharmacy.localityNameEl}}</small>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</div>
+
+<div *ngIf="flatPharmacies.length == 0">
+  <mat-spinner></mat-spinner>
+  <p class="mat-subheader">Loading ...</p>
+</div>
+<div *ngIf="flatPharmacies">
+  <app-pharmacy-item *ngFor="let flatPharmacy of flatPharmacies" [flatPharmacy]='flatPharmacy'></app-pharmacy-item>
+</div>
+
+<mat-divider></mat-divider>
+
+<app-android-app *ngIf="isAndroid"></app-android-app>
+
+<mat-divider></mat-divider>
+
+<app-aspectsense></app-aspectsense>

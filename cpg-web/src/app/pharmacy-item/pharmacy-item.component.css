@@ -1,0 +1,61 @@
+.pharmacy-distance-container {
+  float: left;
+  text-align: right;
+  min-width: 80px;
+  margin-top: 16px;
+  margin-left: 16px;
+}
+
+.pharmacy-distance-text {
+  color: green;
+  font-size: x-large;
+}
+
+.pharmacy-distance-text-km {
+  color: darkgreen;
+  font-size: small;
+}
+
+.pharmacy-details-container {
+  overflow: hidden;
+  margin-right: 16px;
+}
+
+.pharmacy-item {
+  margin-top: 16px;
+}
+
+.name-el {
+  margin-left: 16px;
+  color: darkgreen;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.name-en {
+  margin-left: 16px;
+  color: dimgrey;
+  font-size: medium;
+}
+
+.address {
+  font-size: initial;
+  font-weight: 400;
+}
+
+mat-divider {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+mat-icon {
+  vertical-align: center;
+}
+
+p {
+  margin-left: 16px;
+}
+
+.nav-action {
+  text-align: right;
+}

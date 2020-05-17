@@ -1,0 +1,11 @@
+<mat-tab-group class="mat-tab-group">
+  <mat-tab label="On Call Now">
+    <app-pharmacies-selected [selectionType]="SelectionType.Now"></app-pharmacies-selected>
+  </mat-tab>
+  <mat-tab label="Next Day">
+    <app-pharmacies-selected [selectionType]="SelectionType.Next"></app-pharmacies-selected>
+  </mat-tab>
+  <mat-tab label="All">
+    <app-pharmacies-all></app-pharmacies-all>
+  </mat-tab>
+</mat-tab-group>

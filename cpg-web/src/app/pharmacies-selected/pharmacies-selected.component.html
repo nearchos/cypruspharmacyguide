@@ -1,0 +1,20 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{infoMessage}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-pharmacy-hours></app-pharmacy-hours>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<app-pharmacy-item *ngFor="let flatPharmacy of flatPharmacies" [flatPharmacy]="flatPharmacy"></app-pharmacy-item>
+
+<mat-divider></mat-divider>
+
+<app-android-app *ngIf="isAndroid"></app-android-app>
+
+<mat-divider></mat-divider>
+
+<app-aspectsense></app-aspectsense>

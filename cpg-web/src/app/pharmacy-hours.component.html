@@ -1,0 +1,49 @@
+<mat-card id="card-summer-hours">
+  <mat-card-header>
+    <mat-card-title>
+      <mat-icon>wb_sunny</mat-icon>
+      Summer Period
+    </mat-card-title>
+    <mat-card-subtitle>{{isSummer ? '✔' : ''}} May 1st to Sep 30th</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div class="pharmacy-hours">Mon: 9:00-1:30 & 4:00-7:30</div>
+    <div class="pharmacy-hours">Tue: 9:00-1:30 & 4:00-7:30</div>
+    <div class="pharmacy-hours">Wed: 9:00-1:30</div>
+    <div class="pharmacy-hours">Thu: 9:00-1:30 & 4:00-7:30</div>
+    <div class="pharmacy-hours">Thu: 9:00-1:30 & 4:00-7:30</div>
+    <div class="pharmacy-hours">Sat: 9:00-1:30</div>
+    <div class="pharmacy-hours">Sun: closed</div>
+
+    <div class="pharmacy-hours-notes">
+      On call pharmacies are open 8 <small>AM</small> to 11 <small>PM</small>.
+      Call ahead for service after 11 <small>PM</small>.
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card id="card-winter-hours">
+  <mat-card-header>
+    <mat-card-title>
+      <mat-icon>wb_cloudy</mat-icon>
+      Winter Period
+    </mat-card-title>
+    <mat-card-subtitle>{{!isSummer ? '✔' : ''}} Oct 1st to Apr 30th</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div class="pharmacy-hours">Mon: 9:00-1:30 & 3:00-6:30</div>
+    <div class="pharmacy-hours">Tue: 9:00-1:30 & 3:00-6:30</div>
+    <div class="pharmacy-hours">Wed: 9:00-1:30</div>
+    <div class="pharmacy-hours">Thu: 9:00-1:30 & 3:00-6:30</div>
+    <div class="pharmacy-hours">Thu: 9:00-1:30 & 3:00-6:30</div>
+    <div class="pharmacy-hours">Sat: 9:00-1:30</div>
+    <div class="pharmacy-hours">Sun: closed</div>
+
+    <div class="pharmacy-hours-notes">
+      On call pharmacies are open 8 <small>AM</small> to 10 <small>PM</small>.
+      Call ahead for service after 10 <small>PM</small>.
+    </div>
+  </mat-card-content>
+</mat-card>

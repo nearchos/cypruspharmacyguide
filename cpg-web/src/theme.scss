@@ -1,0 +1,33 @@
+@import '../node_modules/@angular/material/theming';
+@include mat-core();
+
+$my-app-primary: mat-palette($mat-green);
+$my-app-accent:  mat-palette($mat-yellow, 500, 900, A100);
+$my-app-warn:    mat-palette($mat-deep-orange);
+$my-app-theme:   mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+@include angular-material-theme($my-app-theme);
+
+.pharmacy-card {
+  //max-width: 400px;
+  //background-color: whitesmoke;
+  //background-color: #0c9e3f;
+  //color: white;
+}
+
+.mat-card {
+  border: 1px solid #404040;
+  margin: 10px;
+}
+
+
+.android-app-card {
+  max-width: 400px;
+  margin: 10px;
+  background-color: yellow;
+}
+
+.mat-accordion,
+.mat-expansion-panel {
+  background: yellow;
+  border-radius: 0;
+}

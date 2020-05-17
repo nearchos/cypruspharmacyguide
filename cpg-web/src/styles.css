@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  max-width: 1080px;
+  margin: 0 auto !important;
+  float: none !important;
+}
+
+.mat-icon {
+  vertical-align: middle;
+}
+
+.info {
+  flex: 1 1 auto;
+  padding: 8px;
+  background: yellow;
+  color: darkgreen;
+}
+
+.logo-img {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+[dir='rtl'] .logo-img {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+.aspectsense {
+  flex: 1 1 auto;
+  padding: 12px;
+  color: black;
+  background: whitesmoke;
+}
+
+.aspectsense-link {
+  color: green;
+}
+
+.pharmacy-hours {
+  font-family: monospace;
+  padding-left: 16px;
+}
+
+.pharmacy-hours-notes {
+  padding-left: 16px;
+  margin-top: 10px;
+}
+
+.toolbar-icon {
+  padding: 0 14px;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
