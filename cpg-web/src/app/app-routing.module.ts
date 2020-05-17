@@ -4,6 +4,7 @@ import { PharmaciesTabsComponent } from './pharmacies-tabs/pharmacies-tabs.compo
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
 import { InfoComponent } from './info.component';
 import { SettingsComponent } from './settings.component';
+import { PrivacyComponent } from './privacy.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/pharmacies', pathMatch: 'full' },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'pharmacy/:pharmacyID', component: PharmacyComponent },
   { path: 'info', component: InfoComponent },
   { path: 'settings', component: SettingsComponent },
+  { path: 'privacy', component: PrivacyComponent },
 ];
 
 @NgModule({

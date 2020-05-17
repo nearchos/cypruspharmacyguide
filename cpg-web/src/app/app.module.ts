@@ -32,6 +32,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SettingsComponent } from './settings.component';
 import { InfoComponent } from './info.component';
+import { PrivacyComponent } from './privacy.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { InfoComponent } from './info.component';
     PharmacyHoursComponent,
     SettingsComponent,
     InfoComponent,
+    PrivacyComponent,
   ],
     imports: [
         BrowserModule,

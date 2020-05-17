@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Platform} from '@angular/cdk/platform';
 
 @Component({
   selector: 'app-android-app',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AndroidAppComponent implements OnInit {
 
-  constructor() { }
+  isAndroid = false;
+
+  constructor(
+    private platform: Platform
+  ) { }
 
   ngOnInit(): void {
+    this.isAndroid = this.platform.ANDROID;
   }
 
 }

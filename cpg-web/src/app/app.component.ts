@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
-import { UserLocation } from './user-location';
 
 // tslint:disable-next-line:ban-types
 declare let gtag: Function;
@@ -13,7 +12,6 @@ declare let gtag: Function;
 })
 export class AppComponent {
   title = 'Cyprus Pharmacy Guide';
-  userLocation: UserLocation;
 
   constructor(
     private router: Router,
