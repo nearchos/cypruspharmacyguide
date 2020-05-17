@@ -30,15 +30,11 @@ export class PharmaciesSelectedComponent implements OnInit {
 
   private getFlatPharmacies(): void {
     if (this.selectionType === SelectionType.Now) {
-      this.dataService.getPharmaciesOnCallNow().subscribe(flatPharmacies => {
-        this.flatPharmacies = flatPharmacies;
-        this.dataService.getLocation().subscribe(position => this.sortFlatPharmaciesByDistance(position));
-      });
+      this.dataService.getPharmaciesOnCallNow().subscribe(flatPharmacies => this.flatPharmacies = flatPharmacies);
+      this.dataService.getLocation().subscribe(position => this.sortFlatPharmaciesByDistance(position));
     } else {
-      this.dataService.getPharmaciesNextDay().subscribe(flatPharmacies => {
-        this.flatPharmacies = flatPharmacies;
-        this.dataService.getLocation().subscribe(position => this.sortFlatPharmaciesByDistance(position));
-      });
+      this.dataService.getPharmaciesNextDay().subscribe(flatPharmacies => this.flatPharmacies = flatPharmacies);
+      this.dataService.getLocation().subscribe(position => this.sortFlatPharmaciesByDistance(position));
     }
   }
 
