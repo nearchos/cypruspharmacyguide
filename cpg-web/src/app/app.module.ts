@@ -11,6 +11,11 @@ import { PharmacyComponent } from './pharmacy/pharmacy.component';
 import { PharmaciesAllComponent } from './pharmacies-all/pharmacies-all.component';
 import { PharmaciesSelectedComponent } from './pharmacies-selected/pharmacies-selected.component';
 import { PharmacyItemComponent } from './pharmacy-item/pharmacy-item.component';
+import { AspectsenseComponent } from './aspectsense.component';
+import { AndroidAppComponent } from './android-app.component';
+import { PharmacyHoursComponent } from './pharmacy-hours.component';
+import { InfoComponent } from './info.component';
+import { PrivacyComponent } from './privacy.component';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -22,17 +27,11 @@ import { MatCardModule} from '@angular/material/card';
 import { MatButtonModule} from '@angular/material/button';
 import { MatTooltipModule} from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { AspectsenseComponent } from './aspectsense.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRippleModule } from '@angular/material/core';
-import { AndroidAppComponent } from './android-app.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { PharmacyHoursComponent } from './pharmacy-hours.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { SettingsComponent } from './settings.component';
-import { InfoComponent } from './info.component';
-import { PrivacyComponent } from './privacy.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +44,6 @@ import { PrivacyComponent } from './privacy.component';
     AspectsenseComponent,
     AndroidAppComponent,
     PharmacyHoursComponent,
-    SettingsComponent,
     InfoComponent,
     PrivacyComponent,
   ],

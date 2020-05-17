@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { PharmaciesTabsComponent } from './pharmacies-tabs/pharmacies-tabs.component';
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
 import { InfoComponent } from './info.component';
-import { SettingsComponent } from './settings.component';
 import { PrivacyComponent } from './privacy.component';
 
 const routes: Routes = [
@@ -11,7 +10,6 @@ const routes: Routes = [
   { path: 'pharmacies', component: PharmaciesTabsComponent },
   { path: 'pharmacy/:pharmacyID', component: PharmacyComponent },
   { path: 'info', component: InfoComponent },
-  { path: 'settings', component: SettingsComponent },
   { path: 'privacy', component: PrivacyComponent },
 ];
 
