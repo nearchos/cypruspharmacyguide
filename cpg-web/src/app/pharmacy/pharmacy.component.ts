@@ -14,11 +14,11 @@ export class PharmacyComponent implements OnInit {
 
   static coreNavUrl = 'www.google.com/maps/dir/?api=1&travelmode=driving&layer=traffic&destination';
 
-  id: number;
   public flatPharmacies: FlatPharmacy[];
   public coreMapUrl = 'https://www.google.com/maps/search/?api=1&query';
   public navUrl: string;
   isAndroid = false;
+  structuredData = ''; // todo JSON.stringify(new FlatPharmacyStructuredData(flatPharmacy)); // set structured data
 
   constructor(
     private router: Router,
@@ -31,8 +31,8 @@ export class PharmacyComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.id = (+params.get('pharmacyID'));
-      this.dataService.getFlatPharmaciesById(this.id).subscribe(flatPharmacies => {
+      const id = (+params.get('pharmacyID'));
+      this.dataService.getFlatPharmaciesById(id).subscribe(flatPharmacies => {
         this.flatPharmacies = flatPharmacies;
       });
     });

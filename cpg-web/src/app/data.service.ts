@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of} from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { Data } from './data';
 import { City } from './city';
@@ -90,7 +90,7 @@ export class DataService {
   }
 
   constructor(
-    private readonly http: HttpClient
+    private readonly http: HttpClient,
   ) {
   }
 
@@ -116,6 +116,10 @@ export class DataService {
   private getData(): Observable<Data> {
     return this.http.get<Data>('/assets/mock-data.json');
     // return this.http.get<Data>('https://cypruspharmacyguide.appspot.com/json/update-all?magic=...');
+    // const options = {
+    //   responseType: 'json' as const,
+    // };
+    // return this.http.get<Data>('https://cypruspharmacyguide.appspot.com/json/update-all?magic=...', options);
   }
 
   public getAllFlatPharmacies(): Observable<FlatPharmacy[]> {

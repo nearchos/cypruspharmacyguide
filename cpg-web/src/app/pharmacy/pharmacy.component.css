@@ -57,7 +57,14 @@
 
 .address-en {
   font-size: initial;
-  font-weight: 300;
+  color: dimgrey;
+  font-weight: 400;
+}
+
+.address-details {
+  font-size: initial;
+  color: green;
+  font-weight: 400;
 }
 
 mat-divider {

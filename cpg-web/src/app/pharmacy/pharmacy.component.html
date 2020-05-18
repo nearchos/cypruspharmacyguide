@@ -34,6 +34,7 @@
         {{flatPharmacy.address}}, CY-{{flatPharmacy.addressPostalCode}}
         <span *ngIf="flatPharmacy.localityNameEl != flatPharmacy.cityNameEl">, {{flatPharmacy.localityNameEl}}</span>, {{flatPharmacy.cityNameEl}}
       </p>
+      <p class="address-details">{{flatPharmacy.addressDetails}}</p>
       <p class="address-en">
         {{toGreeklish(flatPharmacy.address)}}, CY-{{flatPharmacy.addressPostalCode}}
         <span *ngIf="flatPharmacy.localityNameEn != flatPharmacy.cityNameEn">, {{flatPharmacy.localityNameEn}}</span>, {{flatPharmacy.cityNameEn}}
@@ -70,3 +71,5 @@
 <mat-divider></mat-divider>
 
 <app-aspectsense></app-aspectsense>
+
+<ngx-json-ld [json]="structuredData"></ngx-json-ld>
