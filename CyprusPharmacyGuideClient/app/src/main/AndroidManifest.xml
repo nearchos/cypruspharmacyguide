@@ -33,7 +33,22 @@
 
         <activity
             android:name=".ActivityPharmacy"
-            android:label="@string/Pharmacy" />
+            android:label="@string/Pharmacy"
+            android:launchMode="singleTask">
+
+            <intent-filter android:label="@string/Pharmacy">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https"
+                    android:host="cypruspharmacyguide.com"
+                    android:pathPrefix="/pharmacy" />
+
+            </intent-filter>
+
+        </activity>
 
         <activity
             android:name=".ActivityInformation"

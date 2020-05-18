@@ -9,8 +9,8 @@ android {
         applicationId "com.aspectsense.pharmacyguidecy"
         minSdkVersion 26 // min 26 is needed for java.time.* used in Utils
         targetSdkVersion 29
-        versionCode 47
-        versionName "7.2.1-" + versionCode + "-" + getDate()
+        versionCode 48
+        versionName "7.3.0-" + versionCode + "-" + getDate()
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -23,7 +23,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -56,7 +56,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.android.gms:play-services-ads:19.1.0'
-    implementation 'com.google.firebase:firebase-analytics:17.4.0'
+    implementation 'com.google.firebase:firebase-analytics:17.4.1'
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

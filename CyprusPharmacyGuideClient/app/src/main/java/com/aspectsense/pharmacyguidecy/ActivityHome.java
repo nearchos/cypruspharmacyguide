@@ -422,7 +422,7 @@ public class ActivityHome extends AppCompatActivity {
         if(numOfUpdates == 0) {
             Snackbar.make(viewPager, R.string.Already_up_to_date, BaseTransientBottomBar.LENGTH_SHORT).show();
         } else {
-            Snackbar.make(viewPager, getResources().getQuantityText(R.plurals.Updates_fetched, numOfUpdates), BaseTransientBottomBar.LENGTH_SHORT).show();
+            Snackbar.make(viewPager, getResources().getQuantityString(R.plurals.Updates_fetched, numOfUpdates, numOfUpdates), BaseTransientBottomBar.LENGTH_SHORT).show();
         }
 
         // update DB
@@ -496,6 +496,4 @@ public class ActivityHome extends AppCompatActivity {
             return false;
         }
     };
-
-    // todo i18n - add Greek
 }

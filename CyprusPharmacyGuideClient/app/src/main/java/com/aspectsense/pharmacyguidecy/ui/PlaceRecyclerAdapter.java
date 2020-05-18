@@ -23,6 +23,7 @@ import com.aspectsense.pharmacyguidecy.ActivityHome;
 import com.aspectsense.pharmacyguidecy.R;
 import com.aspectsense.pharmacyguidecy.Utils;
 import com.aspectsense.pharmacyguidecy.data.City;
+import com.aspectsense.pharmacyguidecy.data.FlatPharmacy;
 import com.aspectsense.pharmacyguidecy.data.Locality;
 import com.aspectsense.pharmacyguidecy.data.Pharmacy;
 import com.aspectsense.pharmacyguidecy.data.Place;
@@ -186,41 +187,20 @@ public class PlaceRecyclerAdapter
         }
     }
 
-    public static final String PHARMACY_ID = "PHARMACY_ID";
-    public static final String PHARMACY_NAME_EN = "PHARMACY_NAME_EN";
-    public static final String PHARMACY_NAME_EL = "PHARMACY_NAME_EL";
-    public static final String PHARMACY_PHONE_BUSINESS = "PHARMACY_PHONE_BUSINESS";
-    public static final String PHARMACY_PHONE_HOME = "PHARMACY_PHONE_HOME";
-    public static final String PHARMACY_ADDRESS = "PHARMACY_ADDRESS";
-    public static final String PHARMACY_ADDRESS_DETAILS = "PHARMACY_ADDRESS_DETAILS";
-    public static final String PHARMACY_LOCALITY_EN = "PHARMACY_LOCALITY_EN";
-    public static final String PHARMACY_LOCALITY_EL = "PHARMACY_LOCALITY_EL";
-    public static final String PHARMACY_CITY_EN = "PHARMACY_CITY_EN";
-    public static final String PHARMACY_CITY_EL = "PHARMACY_CITY_EL";
-    public static final String PHARMACY_LAT = "PHARMACY_LAT";
-    public static final String PHARMACY_LNG = "PHARMACY_LNG";
-
+    public static final String FLAT_PHARMACY = "FLAT_PHARMACY";
     public static final String LOCATION = "LOCATION";
 
     private void showPharmacy(@NonNull final Pharmacy pharmacy, @NonNull final Location location, @NonNull PlaceViewHolder holder) {
         final Intent intent = new Intent(activity, ActivityPharmacy.class);
-        intent.putExtra(PHARMACY_ID, pharmacy.getId());
-        intent.putExtra(PHARMACY_NAME_EN, pharmacy.getNameEn());
-        intent.putExtra(PHARMACY_NAME_EL, pharmacy.getName());
-        intent.putExtra(PHARMACY_PHONE_BUSINESS, pharmacy.getPhoneBusiness());
-        intent.putExtra(PHARMACY_PHONE_HOME, pharmacy.getPhoneHome());
-        intent.putExtra(PHARMACY_ADDRESS, pharmacy.getAddress());
-        intent.putExtra(PHARMACY_ADDRESS_DETAILS, pharmacy.getAddressDetails());
         final Locality locality = uuidsToLocalities.get(pharmacy.getLocalityUuid());
         assert locality != null;
-        intent.putExtra(PHARMACY_LOCALITY_EN, locality.getNameEn());
-        intent.putExtra(PHARMACY_LOCALITY_EL, locality.getNameEl());
         final City city = uuidsToCities.get(locality.getCityUuid());
         assert city != null;
-        intent.putExtra(PHARMACY_CITY_EN, city.getNameEn());
-        intent.putExtra(PHARMACY_CITY_EL, city.getNameEl());
-        intent.putExtra(PHARMACY_LAT, pharmacy.getLat() == 0f ? locality.getLat() : pharmacy.getLat());
-        intent.putExtra(PHARMACY_LNG, pharmacy.getLng() == 0f ? locality.getLng() : pharmacy.getLng());
+
+        intent.putExtra(FLAT_PHARMACY, new FlatPharmacy(pharmacy.getId(), pharmacy.getName(), pharmacy.getNameEn(),
+                pharmacy.getAddress(), pharmacy.getAddressPostalCode(), pharmacy.getAddressDetails(),
+                pharmacy.getLat(), pharmacy.getLng(), locality.getNameEl(), locality.getNameEn(),
+                city.getNameEl(), city.getNameEn(), pharmacy.getPhoneBusiness(), pharmacy.getPhoneHome()));
 
         intent.putExtra(LOCATION, location);
 
