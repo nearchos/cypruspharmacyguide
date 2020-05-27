@@ -2708,19 +2708,6 @@
     },
 
     {
-      "ID": 665,
-      "name": "Φιλιππίδου - Γεωργιάδου Κωνσταντία",
-      "address": "Ευαγόρα Παλληκαρίδη 93",
-      "addressPostalCode": "8010",
-      "addressDetails": "Έναντι καταστήματος ρούχων ΝΟΥΜΕΡΟ",
-      "lat": 34.77903,
-      "lng": 32.42463,
-      "localityUUID": "ahVzfmN5cHJ1c3BoYXJtYWN5Z3VpZGVyFQsSCExvY2FsaXR5GICAgOCpzcAIDA",
-      "phoneBusiness": "26949259",
-      "phoneHome": "26222670"
-    },
-
-    {
       "ID": 725,
       "name": "Αρέστη Παναγιώτης",
       "address": "Λεωφ. Στροβόλου 206",
@@ -7622,19 +7609,6 @@
     },
 
     {
-      "ID": 1039,
-      "name": "Πετρίδης Πέτρος",
-      "address": "Αγίας Φυλάξεως 64",
-      "addressPostalCode": "3025",
-      "addressDetails": "Νοτίως Λεωφόρου Μακαρίου (από Λανίτειο προς Τζιαμούδα)",
-      "lat": 34.682746,
-      "lng": 33.038248,
-      "localityUUID": "ahVzfmN5cHJ1c3BoYXJtYWN5Z3VpZGVyFQsSCExvY2FsaXR5GICAgJCS1sYLDA",
-      "phoneBusiness": "25366340",
-      "phoneHome": "96135536"
-    },
-
-    {
       "ID": 1090,
       "name": "Ζόππου Κωνσταντίνος",
       "address": "Λεωφόρος Γρηγόρη Αυξεντίου 40",
@@ -8675,19 +8649,6 @@
     },
 
     {
-      "ID": 1154,
-      "name": "Κωνσταντίνου Νεκταρία",
-      "address": "Αγίου Γεωργίου 29",
-      "addressPostalCode": "2311",
-      "addressDetails": "Στην κεντρική λεωφόρο δίπλα από το Pharos Barber, 200μ από το φούρνο Λαδά και τράπεζα Κύπρου",
-      "lat": 35.108733,
-      "lng": 33.299758,
-      "localityUUID": "ahVzfmN5cHJ1c3BoYXJtYWN5Z3VpZGVyFQsSCExvY2FsaXR5GICAgOCuy4MKDA",
-      "phoneBusiness": "22730343",
-      "phoneHome": "22730343"
-    },
-
-    {
       "ID": 642,
       "name": "Παφίτη Μαρία",
       "address": "Πεδιαίου 18",
@@ -8766,19 +8727,6 @@
     },
 
     {
-      "ID": 1159,
-      "name": "Τάττης Αναστασία",
-      "address": "Αξίου 80",
-      "addressPostalCode": "2311",
-      "addressDetails": "",
-      "lat": 35.110208,
-      "lng": 33.310422,
-      "localityUUID": "ahVzfmN5cHJ1c3BoYXJtYWN5Z3VpZGVyFQsSCExvY2FsaXR5GICAgOCuy4MKDA",
-      "phoneBusiness": "22730600",
-      "phoneHome": "22730600"
-    },
-
-    {
       "ID": 1160,
       "name": "Παύλου Ελένη",
       "address": "Νίκου Παττίχη 50",
@@ -8805,19 +8753,6 @@
     },
 
     {
-      "ID": 1162,
-      "name": "Ραμίρεζ Λυδία",
-      "address": "Λεωφ. Παπανικολή 31Α",
-      "addressPostalCode": "6053",
-      "addressDetails": "Δρόμος Σταδίου Ανόρθωσης",
-      "lat": 34.934332,
-      "lng": 33.621637,
-      "localityUUID": "ahVzfmN5cHJ1c3BoYXJtYWN5Z3VpZGVyFQsSCExvY2FsaXR5GICAgOD3mJkIDA",
-      "phoneBusiness": "24634390",
-      "phoneHome": "24634390"
-    },
-
-    {
       "ID": 1164,
       "name": "Βοσκού Μαριλένα",
       "address": "Αγίας Φυλάξεως 145",
@@ -8828,6 +8763,71 @@
       "localityUUID": "ahVzfmN5cHJ1c3BoYXJtYWN5Z3VpZGVyFQsSCExvY2FsaXR5GICAgJCS1sYLDA",
       "phoneBusiness": "25717300",
       "phoneHome": "99007953"
+    },
+
+    {
+      "ID": 1039,
+      "name": "Πετρίδης Πέτρος",
+      "address": "Αγίας Φυλάξεως 64",
+      "addressPostalCode": "3025",
+      "addressDetails": "Νοτίως Λεωφόρου Μακαρίου (από Λανίτειο προς Τζιαμούδα)",
+      "lat": 34.682746,
+      "lng": 33.038248,
+      "localityUUID": "ahVzfmN5cHJ1c3BoYXJtYWN5Z3VpZGVyFQsSCExvY2FsaXR5GICAgJCS1sYLDA",
+      "phoneBusiness": "25366340",
+      "phoneHome": "96362348"
+    },
+
+    {
+      "ID": 1159,
+      "name": "Τάττης Αναστασία",
+      "address": "Αξίου 80",
+      "addressPostalCode": "2311",
+      "addressDetails": "Απέναντι από την υπεραγορά LIDL Λακατάμια",
+      "lat": 35.110208,
+      "lng": 33.310422,
+      "localityUUID": "ahVzfmN5cHJ1c3BoYXJtYWN5Z3VpZGVyFQsSCExvY2FsaXR5GICAgOCuy4MKDA",
+      "phoneBusiness": "22730600",
+      "phoneHome": "22730600"
+    },
+
+    {
+      "ID": 665,
+      "name": "Φιλιππίδου - Γεωργιάδου Κωνσταντία",
+      "address": "Ευαγόρα Παλληκαρίδη 93",
+      "addressPostalCode": "8010",
+      "addressDetails": "Έναντι καταστήματος ρούχων ΝΟΥΜΕΡΟ",
+      "lat": 34.77903,
+      "lng": 32.42463,
+      "localityUUID": "ahVzfmN5cHJ1c3BoYXJtYWN5Z3VpZGVyFQsSCExvY2FsaXR5GICAgOCpzcAIDA",
+      "phoneBusiness": "26949259",
+      "phoneHome": "99647959"
+    },
+
+    {
+      "ID": 1162,
+      "name": "Ραμίρεζ Λυδία",
+      "address": "Λεωφ. Παπανικολή 31Α",
+      "addressPostalCode": "6053",
+      "addressDetails": "Δρόμος Σταδίου Ανόρθωσης",
+      "lat": 34.934332,
+      "lng": 33.621637,
+      "localityUUID": "ahVzfmN5cHJ1c3BoYXJtYWN5Z3VpZGVyFQsSCExvY2FsaXR5GICAgOD3mJkIDA",
+      "phoneBusiness": "24634390",
+      "phoneHome": "96323458"
+    },
+
+    {
+      "ID": 1154,
+      "name": "Κωνσταντίνου Νεκταρία",
+      "address": "Αγίου Γεωργίου 29",
+      "addressPostalCode": "2311",
+      "addressDetails": "Από υπεραγορά ΚΚΟΛΙΑΣ προς Ανθούπολη, δίπλα από το Phanos Hair Studio, 200μ από  φούρνο Λαδά και τράπεζα Κύπρου",
+      "lat": 35.108733,
+      "lng": 33.299758,
+      "localityUUID": "ahVzfmN5cHJ1c3BoYXJtYWN5Z3VpZGVyFQsSCExvY2FsaXR5GICAgOCuy4MKDA",
+      "phoneBusiness": "22730343",
+      "phoneHome": "22730343"
     }
   ],
 
@@ -8933,11 +8933,6 @@
     },
 
     {
-      "date": "2020-05-12",
-      "pharmacies": "835, 777, 683, 654, 494, 719, 945, 1044, 826, 571, 574, 1119, 959"
-    },
-
-    {
       "date": "2020-05-13",
       "pharmacies": "869, 328, 713, 874, 397, 1137, 562, 1076, 503, 1017, 1083, 988, 700, 541"
     },
@@ -8945,11 +8940,6 @@
     {
       "date": "2020-05-14",
       "pharmacies": "1057, 773, 422, 807, 1099, 1107, 532, 823, 824, 249, 953, 670, 542"
-    },
-
-    {
-      "date": "2020-05-15",
-      "pharmacies": "680, 937, 1035, 782, 1070, 463, 1008, 403, 952, 1113, 732, 605, 959"
     },
 
     {
@@ -9005,11 +8995,6 @@
     {
       "date": "2020-05-26",
       "pharmacies": "226, 1029, 646, 743, 647, 520, 920, 664, 1049, 954, 1149, 989, 959"
-    },
-
-    {
-      "date": "2020-05-27",
-      "pharmacies": "384, 1152, 802, 581, 1164, 1104, 466, 690, 916, 1015, 1016, 698, 1147, 1023"
     },
 
     {
@@ -9640,8 +9625,23 @@
     {
       "date": "2020-09-30",
       "pharmacies": "593, 946, 514, 978, 739, 933, 1142, 662, 1063, 314, 845, 493"
+    },
+
+    {
+      "date": "2020-05-12",
+      "pharmacies": "835, 777, 683, 654, 494, 719, 945, 826, 571, 574, 1119, 959"
+    },
+
+    {
+      "date": "2020-05-15",
+      "pharmacies": "680, 937, 1035, 1070, 463, 1008, 403, 952, 1113, 732, 605, 959"
+    },
+
+    {
+      "date": "2020-05-27",
+      "pharmacies": "384, 1152, 802, 581, 1164, 1104, 466, 690, 916, 1015, 698, 1147, 1023"
     }
   ],
 
-  "lastUpdated": 1587715605457
+  "lastUpdated": 1590560570681
 }
