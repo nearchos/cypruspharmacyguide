@@ -9,8 +9,8 @@ android {
         applicationId "com.aspectsense.pharmacyguidecy"
         minSdkVersion 26 // min 26 is needed for java.time.* used in Utils
         targetSdkVersion 29
-        versionCode 60
-        versionName "7.5.0-" + versionCode + "-" + getDate()
+        versionCode 61
+        versionName "7.5.1-" + versionCode + "-" + getDate()
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

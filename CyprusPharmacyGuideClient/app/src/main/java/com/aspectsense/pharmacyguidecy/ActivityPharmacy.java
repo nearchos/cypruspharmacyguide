@@ -28,6 +28,7 @@ import android.widget.TextView;
 import com.aspectsense.greektools.Greeklish;
 import com.aspectsense.pharmacyguidecy.data.City;
 import com.aspectsense.pharmacyguidecy.data.FlatPharmacy;
+import com.aspectsense.pharmacyguidecy.data.FlatPharmacyAsStructuredData;
 import com.aspectsense.pharmacyguidecy.data.Locality;
 import com.aspectsense.pharmacyguidecy.data.Pharmacy;
 import com.aspectsense.pharmacyguidecy.ui.PlaceRecyclerAdapter;
@@ -70,6 +71,7 @@ public class ActivityPharmacy extends AppCompatActivity {
     private Button buttonDialPharmacy;
     private Button buttonDialHome;
 
+    private SupportMapFragment supportMapFragment;
     private GoogleMap mGoogleMap = null;
 
     private AdView adView;
@@ -114,6 +116,9 @@ public class ActivityPharmacy extends AppCompatActivity {
         buttonDialHome = findViewById(R.id.buttonDialHome);
         buttonDialHome.setEnabled(false);
 
+        // Obtain the SupportMapFragment
+        supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+
         this.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -144,9 +149,8 @@ public class ActivityPharmacy extends AppCompatActivity {
             adView.resume();
         }
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        if (mapFragment != null) mapFragment.getMapAsync(googleMap -> {
+        // get notified when the map is ready to be used.
+        if (supportMapFragment != null) supportMapFragment.getMapAsync(googleMap -> {
             this.mGoogleMap = googleMap;
             runOnUiThread(this::updateUI);
         }); // callback for map ready event
@@ -164,8 +168,10 @@ public class ActivityPharmacy extends AppCompatActivity {
         this.selectedFlatPharmacy = null;
         this.passedLocation = null;
 
+        intent.setExtrasClassLoader(FlatPharmacy.class.getClassLoader());
+
         if (intent.hasExtra(PlaceRecyclerAdapter.FLAT_PHARMACY)) {
-            this.selectedFlatPharmacy = intent.getParcelableExtra(PlaceRecyclerAdapter.FLAT_PHARMACY);
+            this.selectedFlatPharmacy = (FlatPharmacy) intent.getSerializableExtra(PlaceRecyclerAdapter.FLAT_PHARMACY);
         }
         if (intent.hasExtra(PlaceRecyclerAdapter.LOCATION)) {
             this.passedLocation = intent.getParcelableExtra(PlaceRecyclerAdapter.LOCATION);
@@ -390,57 +396,8 @@ public class ActivityPharmacy extends AppCompatActivity {
 
         // tested at https://search.google.com/structured-data/testing-tool
         if(selectedFlatPharmacy != null) {
-            final String structuredJson = new FlatPharmacyAsStructuredData(selectedFlatPharmacy).toJson();
+            final String structuredJson = gson.toJson(new FlatPharmacyAsStructuredData(selectedFlatPharmacy));
             assistContent.setStructuredData(structuredJson);
-        }
-    }
-
-    static class FlatPharmacyAsStructuredData {
-        @SerializedName("@context") private final String dataContext = "https://schema.org";
-        @SerializedName("@type") private final String type = "pharmacy";
-        @SerializedName("@id") private String id;
-        private String name;
-        private Address address;
-        private String telephone;
-        private Geo geo;
-
-        FlatPharmacyAsStructuredData(final FlatPharmacy flatPharmacy) {
-            this.id = "http://cypruspharmacyguide.com/pharmacy/" + flatPharmacy.getId();
-            this.name = Greeklish.toGreeklish(flatPharmacy.getName());
-            this.address = new Address(flatPharmacy);
-            this.telephone = "+357" + flatPharmacy.getPhoneBusiness();
-            this.geo = new Geo(flatPharmacy);
-        }
-
-        String toJson() {
-            return gson.toJson(this);
-        }
-    }
-
-    private static class Address {
-        @SerializedName("@type") private final String type = "postalAddress";
-        private final String addressCountry = "Cyprus";
-        private final String addressDistrict;
-        private final String addressLocality;
-        private final String addressPostalCode;
-        private final String streetAddress;
-
-        private Address(final FlatPharmacy flatPharmacy) {
-            this.addressDistrict = flatPharmacy.getCityNameEn();
-            this.addressLocality = flatPharmacy.getLocalityNameEn();
-            this.addressPostalCode = flatPharmacy.getAddressPostalCode();
-            this.streetAddress = Greeklish.toGreeklish(flatPharmacy.getAddress());
-        }
-    }
-
-    private static class Geo {
-        @SerializedName("@type") private final String type = "GeoCoordinates";
-        private float latitude;
-        private float longitude;
-
-        private Geo(final FlatPharmacy flatPharmacy) {
-            this.latitude = flatPharmacy.getLat();
-            this.longitude = flatPharmacy.getLng();
         }
     }
 }

@@ -2,6 +2,7 @@ package com.aspectsense.pharmacyguidecy;
 
 import com.aspectsense.greektools.Greeklish;
 import com.aspectsense.pharmacyguidecy.data.FlatPharmacy;
+import com.aspectsense.pharmacyguidecy.data.FlatPharmacyAsStructuredData;
 
 import org.junit.Test;
 
@@ -30,7 +31,7 @@ public class StructuredDataTest {
                 "99071469");
 
         System.out.println("flatPharmacy: " + flatPharmacy);
-        System.out.println("structured data: " + new ActivityPharmacy.FlatPharmacyAsStructuredData(flatPharmacy).toJson());
+        System.out.println("structured data: " + new FlatPharmacyAsStructuredData(flatPharmacy));
 
         assert true;
     }
