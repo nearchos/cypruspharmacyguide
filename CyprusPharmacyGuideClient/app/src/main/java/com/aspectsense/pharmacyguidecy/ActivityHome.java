@@ -176,7 +176,9 @@ public class ActivityHome extends AppCompatActivity {
         super.onResume();
         checkLocationIsEnabledAndStartUpdates();
 
-        if (adView != null) { adView.resume(); }
+        if (adView != null) {
+            adView.resume();
+        }
     }
 
     @Override
@@ -184,12 +186,16 @@ public class ActivityHome extends AppCompatActivity {
         super.onPause();
         fusedLocationClient.removeLocationUpdates(locationCallback); // stop location updates
 
-        if (adView != null) { adView.pause(); }
+        if (adView != null) {
+            adView.pause();
+        }
     }
 
     @Override
     protected void onDestroy() {
-        if (adView != null) { adView.destroy(); }
+        if (adView != null) {
+            adView.destroy();
+        }
         super.onDestroy();
     }
 
@@ -208,7 +214,7 @@ public class ActivityHome extends AppCompatActivity {
                     .addOnFailureListener(this, e -> Log.e(TAG, "location error: " + e));
         } else {
             // Make a request for foreground-only location access.
-            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
         }
     }
 
@@ -218,8 +224,8 @@ public class ActivityHome extends AppCompatActivity {
         boolean permissionAccessFineLocationApproved =
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                         == PackageManager.PERMISSION_GRANTED;
-        if(requestCode == LOCATION_REQUEST_CODE) {
-            if(!permissionAccessFineLocationApproved) {
+        if (requestCode == LOCATION_REQUEST_CODE) {
+            if (!permissionAccessFineLocationApproved) {
                 snackbarLocationDenied.show();
                 handleLocationUpdate(DEFAULT_LOCATION);
             } else {
@@ -251,7 +257,7 @@ public class ActivityHome extends AppCompatActivity {
 
     private void setCities(final List<City> cities) {
         this.cities = cities;
-        if(cities != null && localities != null && latestLocation != null) {
+        if (cities != null && localities != null && latestLocation != null) {
             locationViewModel.setLocation(new LocationViewModel.LocationAndCitiesAndLocalities(latestLocation, cities, localities));
         }
     }
@@ -260,7 +266,7 @@ public class ActivityHome extends AppCompatActivity {
 
     private void setLocalities(final List<Locality> localities) {
         this.localities = localities;
-        if(cities != null && localities != null && latestLocation != null) {
+        if (cities != null && localities != null && latestLocation != null) {
             locationViewModel.setLocation(new LocationViewModel.LocationAndCitiesAndLocalities(latestLocation, cities, localities));
         }
     }
@@ -269,7 +275,7 @@ public class ActivityHome extends AppCompatActivity {
 
     private void handleLocationUpdate(final Location location) {
         this.latestLocation = location;
-        if(cities != null && localities != null && latestLocation != null) {
+        if (cities != null && localities != null && latestLocation != null) {
             locationViewModel.setLocation(new LocationViewModel.LocationAndCitiesAndLocalities(latestLocation, cities, localities));
             checkIfNearbySearchMustBeLogged(location.getLatitude(), location.getLongitude());
         }
@@ -286,9 +292,12 @@ public class ActivityHome extends AppCompatActivity {
         locationSettingsResponseTask.addOnCompleteListener(task -> {
             try {
                 // final LocationSettingsResponse response =
-                        task.getResult(ApiException.class);
+                task.getResult(ApiException.class);
                 // All location settings are satisfied - the client initializes location requests...
-                fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper()); // start location updates
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                        || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper()); // start location updates
+                }
                 snackbarLocationDisabled.dismiss();
             } catch (ApiException exception) {
                 handleLocationUpdate(DEFAULT_LOCATION);
@@ -308,9 +317,12 @@ public class ActivityHome extends AppCompatActivity {
         locationSettingsResponseTask.addOnCompleteListener(task -> {
             try {
                 // final LocationSettingsResponse response =
-                        task.getResult(ApiException.class);
+                task.getResult(ApiException.class);
                 // All location settings are satisfied - the client initializes location requests...
-                fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper()); // start location updates
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                        || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper()); // start location updates
+                }
             } catch (ApiException exception) {
                 switch (exception.getStatusCode()) {
                     case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:

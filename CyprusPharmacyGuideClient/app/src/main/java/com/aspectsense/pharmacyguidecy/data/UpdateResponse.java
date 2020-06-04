@@ -1,5 +1,7 @@
 package com.aspectsense.pharmacyguidecy.data;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -54,5 +56,18 @@ public class UpdateResponse {
 
     public boolean isEmpty() {
         return getUpdateSize() == 0;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "UpdateResponse{" +
+                "status='" + status + '\'' +
+                ", cities=" + (cities == null ? null : cities.length) +
+                ", localities=" + (localities == null ? null : localities.length) +
+                ", pharmacies=" + (pharmacies == null ? null : pharmacies.length) +
+                ", onCalls=" + (onCalls == null ? null : onCalls.length) +
+                ", lastUpdated=" + (lastUpdated) +
+                '}';
     }
 }

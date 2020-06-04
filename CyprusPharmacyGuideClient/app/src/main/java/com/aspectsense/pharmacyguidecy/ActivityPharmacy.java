@@ -80,7 +80,7 @@ public class ActivityPharmacy extends AppCompatActivity {
 
     private CPGDatabase cpgDatabase;
 
-    private static Gson gson = new Gson();
+    private static final Gson gson = new Gson();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,11 +140,13 @@ public class ActivityPharmacy extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        if (adView != null) { adView.resume(); }
+        if (adView != null) {
+            adView.resume();
+        }
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        if(mapFragment != null) mapFragment.getMapAsync(googleMap -> {
+        if (mapFragment != null) mapFragment.getMapAsync(googleMap -> {
             this.mGoogleMap = googleMap;
             runOnUiThread(this::updateUI);
         }); // callback for map ready event
@@ -162,14 +164,14 @@ public class ActivityPharmacy extends AppCompatActivity {
         this.selectedFlatPharmacy = null;
         this.passedLocation = null;
 
-        if(intent.hasExtra(PlaceRecyclerAdapter.FLAT_PHARMACY)) {
+        if (intent.hasExtra(PlaceRecyclerAdapter.FLAT_PHARMACY)) {
             this.selectedFlatPharmacy = intent.getParcelableExtra(PlaceRecyclerAdapter.FLAT_PHARMACY);
         }
-        if(intent.hasExtra(PlaceRecyclerAdapter.LOCATION)) {
+        if (intent.hasExtra(PlaceRecyclerAdapter.LOCATION)) {
             this.passedLocation = intent.getParcelableExtra(PlaceRecyclerAdapter.LOCATION);
         }
 
-        if(selectedFlatPharmacy == null && passedLocation == null) { // must be a web invocation
+        if (selectedFlatPharmacy == null && passedLocation == null) { // must be a web invocation
             String action = intent.getAction();
             Uri data = intent.getData();
 
@@ -187,13 +189,13 @@ public class ActivityPharmacy extends AppCompatActivity {
                 Log.e(ActivityHome.TAG, "Unknown intent action for pharmacy: " + action);
             }
 
-            if(selectedPharmacyId == -1) {
+            if (selectedPharmacyId == -1) {
                 finish(); // terminate early if something is wrong -- i.e. missing id
             } else {
                 final int id = selectedPharmacyId;
                 Executors.newSingleThreadExecutor().execute(() -> {
                     final Pharmacy pharmacy = this.cpgDatabase.cpgDao().getPharmacy(id);
-                    if(pharmacy == null) {
+                    if (pharmacy == null) {
                         Log.e(ActivityHome.TAG, "Pharmacy not found for ID: " + id);
                         finish();
                     } else {
@@ -219,18 +221,22 @@ public class ActivityPharmacy extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
-        if (adView != null) { adView.pause(); }
+        if (adView != null) {
+            adView.pause();
+        }
     }
 
     @Override
     protected void onDestroy() {
-        if (adView != null) { adView.destroy(); }
+        if (adView != null) {
+            adView.destroy();
+        }
         super.onDestroy();
     }
 
     private synchronized void updateUI() {
 
-        if(selectedFlatPharmacy == null || mGoogleMap == null) return;
+        if (selectedFlatPharmacy == null || mGoogleMap == null) return;
 
         // create intent to get directions to pharmacy
         final String directionsUri = "http://maps.google.com/maps?daddr=" + selectedFlatPharmacy.getLat() + "," + selectedFlatPharmacy.getLng();
@@ -273,7 +279,7 @@ public class ActivityPharmacy extends AppCompatActivity {
         addressTextView.setText(localizedAddress);
         final String localizedAddressDetails = isGreek ? selectedFlatPharmacy.getAddressDetails() : Greeklish.toGreeklish(selectedFlatPharmacy.getAddressDetails());
         addressDetailsTextView.setText(localizedAddressDetails);
-        if(this.passedLocation != null) {
+        if (this.passedLocation != null) {
             final float distance = Utils.distanceBetween(passedLocation, selectedFlatPharmacy.getLat(), selectedFlatPharmacy.getLng());
             if (distance < 1000) {
                 distanceUnitTextView.setText(R.string.m);
@@ -286,7 +292,7 @@ public class ActivityPharmacy extends AppCompatActivity {
             }
         }
 
-        if(mGoogleMap != null) {
+        if (mGoogleMap != null) {
             final LatLng pharmacyLatLng = new LatLng(selectedFlatPharmacy.getLat(), selectedFlatPharmacy.getLng());
 
             final String localizedName = isGreek ? selectedFlatPharmacy.getName() : selectedFlatPharmacy.getNameEn();
@@ -305,15 +311,18 @@ public class ActivityPharmacy extends AppCompatActivity {
             double maxLongitude = selectedFlatPharmacy.getLng() + offset;
             double minLongitude = selectedFlatPharmacy.getLng() - offset;
 
-            if(detectedUserLocation != null) {
-                mGoogleMap.setMyLocationEnabled(true);
+            if (detectedUserLocation != null) {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                        || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    mGoogleMap.setMyLocationEnabled(true);
+                }
 
                 final double lat = detectedUserLocation.getLatitude();
                 final double lng = detectedUserLocation.getLongitude();
-                if(maxLatitude < lat) maxLatitude = lat;
-                if(minLatitude > lat) minLatitude = lat;
-                if(maxLongitude < lng) maxLongitude = lng;
-                if(minLongitude > lng) minLongitude = lng;
+                if (maxLatitude < lat) maxLatitude = lat;
+                if (minLatitude > lat) minLatitude = lat;
+                if (maxLongitude < lng) maxLongitude = lng;
+                if (minLongitude > lng) minLongitude = lng;
             }
 
             final LatLng southWestBound = new LatLng(minLatitude, minLongitude);
@@ -358,14 +367,18 @@ public class ActivityPharmacy extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish(); // close this activity and return to previous one (if any)
+                break;
             case R.id.app_bar_menu_location:
                 // App has permission to access location in the foreground. Start your foreground service that has a foreground service type of "location".
-                fusedLocationClient.getLastLocation()
-                        .addOnSuccessListener(this, location -> {
-                            this.detectedUserLocation = location;
-                            updateUI();
-                        })
-                        .addOnFailureListener(this, e -> Log.e(ActivityHome.TAG, "location error: " + e.getMessage()));
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                        || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    fusedLocationClient.getLastLocation()
+                            .addOnSuccessListener(this, location -> {
+                                this.detectedUserLocation = location;
+                                updateUI();
+                            })
+                            .addOnFailureListener(this, e -> Log.e(ActivityHome.TAG, "location error: " + e.getMessage()));
+                }
                 return true;
         }
         return super.onOptionsItemSelected(item);

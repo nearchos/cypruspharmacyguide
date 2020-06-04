@@ -1,6 +1,5 @@
 package com.aspectsense.pharmacyguidecy;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
@@ -45,10 +44,10 @@ public interface CPGDao  {
 //    @Query("SELECT * FROM dates_to_pharmacies WHERE pharmacy_id=:pharmacyId")
 //    LiveData<List<DateToPharmacy>> getDatesToPharmacy(final int pharmacyId);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(final City... cities);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(final Locality... localities);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
