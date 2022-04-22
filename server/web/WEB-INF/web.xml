@@ -454,12 +454,24 @@
         <servlet-name>HeatMap-Logs-Servlet</servlet-name>
         <jsp-file>/map/map-logs.jsp</jsp-file>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>HeatMap-Logs-Servlet</servlet-name>
         <url-pattern>/map-logs</url-pattern>
     </servlet-mapping>
 
     <!--End of HeatMap-->
+
+    <!--    API Services-->
+
+    <servlet>
+        <servlet-name>GetPharmacyServlet</servlet-name>
+        <servlet-class>com.aspectsense.pharmacyguidecy.api.same_origin.GetPharmacyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetPharmacyServlet</servlet-name>
+        <url-pattern>/api/same-origin/pharmacy</url-pattern>
+    </servlet-mapping>
+
+    <!--    End of API Services-->
 
 </web-app>

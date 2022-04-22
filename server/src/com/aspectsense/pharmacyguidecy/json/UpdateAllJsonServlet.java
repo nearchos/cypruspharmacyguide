@@ -29,66 +29,57 @@ public class UpdateAllJsonServlet extends HttpServlet
 {
     // todo move these to the DB so that it is configurable
     public static final String MAGIC_ANDROID  = "e762ecf7–def1–49f4–937c-517700376674";
-    public static final String MAGIC_FACEBOOK = "821b8856-f824-4af4-88bf-61becaff0603"; // ektagon
+    public static final String MAGIC_FLUTTER  = "58662eeb-4c6c-4c46-a8fa-9ed2ccb339a8";
+//    public static final String MAGIC_FACEBOOK = "821b8856-f824-4af4-88bf-61becaff0603"; // ektagon
     public static final String MAGIC_IOS      = "e90bcdc6-84f1-4d5f-9f79-06a62d857e25"; // geoathien
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
+//        response.setHeader("Access-Control-Allow-Methods", "GET"); // todo enable cors
+//        response.setHeader("Access-Control-Allow-Origin", "*.cypruspharmacyguide.com");
 
-        final StringBuilder stringBuilder = new StringBuilder();
         final String result;
 
         final String magic = request.getParameter("magic");
-        if(magic == null || !(MAGIC_ANDROID.equals(magic) || MAGIC_FACEBOOK.equals(magic) || MAGIC_IOS.equals(magic)))
-        {
+        if(!(MAGIC_ANDROID.equals(magic) || MAGIC_IOS.equals(magic) || MAGIC_FLUTTER.equals(magic))) {
+//        if(magic == null || !(MAGIC_ANDROID.equals(magic) || MAGIC_FACEBOOK.equals(magic) || MAGIC_IOS.equals(magic))) {
             log("Error - invalid magic argument: " + magic);
-            stringBuilder
-                    .append("{\n")
-                    .append("  \"status\": \"protocol error (magic)\"\n")
-                    .append("}");
 
-            result = stringBuilder.toString();
-        }
-        else
-        {
+            result = "{ \"status\": \"protocol error (magic)\" }";
+        } else {
             final String fromS = request.getParameter("from");
             long from = 0L;
-            try
-            {
+            try {
                 from = fromS == null ? 0L : Long.parseLong(fromS);
-            }
-            catch (NumberFormatException nfe)
-            {
+            } catch (NumberFormatException nfe) {
                 log("Error parsing 'from' argument: " + fromS, nfe);
             }
 
             final MemcacheService memcacheService = MemcacheServiceFactory.getMemcacheService();
-            if(memcacheService.contains(from))
-            {
+            if(memcacheService.contains(from)) {
                 result = (String) memcacheService.get(from);
-            }
-            else
-            {
-                final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-
-                stringBuilder
-                        .append("{\n")
-                        .append("  \"status\": \"ok\",\n");
-
-                long lastUpdated = from;
-
-                lastUpdated = Math.max(lastUpdated, appendCities(datastore, stringBuilder, from));
-                lastUpdated = Math.max(lastUpdated, appendLocalities(datastore, stringBuilder, from));
-                lastUpdated = Math.max(lastUpdated, appendPharmacies(datastore, stringBuilder, from));
-                lastUpdated = Math.max(lastUpdated, appendOnCalls(datastore, stringBuilder, from));
-
-                stringBuilder
-                        .append("  \"lastUpdated\": " + lastUpdated + "\n")
-                        .append("}");
-
-                result = stringBuilder.toString();
+            } else {
+//                final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+//
+//                stringBuilder
+//                        .append("{\n")
+//                        .append("  \"status\": \"ok\",\n");
+//
+//                long lastUpdated = from;
+//
+//                lastUpdated = Math.max(lastUpdated, appendCities(datastore, stringBuilder, from));
+//                lastUpdated = Math.max(lastUpdated, appendLocalities(datastore, stringBuilder, from));
+//                lastUpdated = Math.max(lastUpdated, appendPharmacies(datastore, stringBuilder, from));
+//                lastUpdated = Math.max(lastUpdated, appendOnCalls(datastore, stringBuilder, from));
+//
+//                stringBuilder
+//                        .append("  \"lastUpdated\": " + lastUpdated + "\n")
+//                        .append("}");
+//
+//                result = stringBuilder.toString();
+                result = createUpdateMessage(from);
 
                 // store in cache
                 memcacheService.put(from, result);
@@ -98,6 +89,28 @@ public class UpdateAllJsonServlet extends HttpServlet
         final PrintWriter printWriter = response.getWriter();
 
         printWriter.println(result);
+    }
+
+    public String createUpdateMessage(final long from) {
+        final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+        final StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder
+                .append("{\n")
+                .append("  \"status\": \"ok\",\n");
+
+        long lastUpdated = from;
+
+        lastUpdated = Math.max(lastUpdated, appendCities(datastore, stringBuilder, from));
+        lastUpdated = Math.max(lastUpdated, appendLocalities(datastore, stringBuilder, from));
+        lastUpdated = Math.max(lastUpdated, appendPharmacies(datastore, stringBuilder, from));
+        lastUpdated = Math.max(lastUpdated, appendOnCalls(datastore, stringBuilder, from));
+
+        stringBuilder
+                .append("  \"lastUpdated\": ").append(lastUpdated).append("\n")
+                .append("}");
+
+        return stringBuilder.toString();
     }
 
     private long appendCities(final DatastoreService datastore, final StringBuilder stringBuilder, final long from)
@@ -216,7 +229,8 @@ public class UpdateAllJsonServlet extends HttpServlet
                     .append("      \"lng\": " + pharmacy.getLng() + ",\n")
                     .append("      \"localityUUID\": \"" + pharmacy.getLocalityUUID() + "\",\n")
                     .append("      \"phoneBusiness\": \"" + pharmacy.getPhoneBusiness() + "\",\n")
-                    .append("      \"phoneHome\": \"" + pharmacy.getPhoneHome() + "\"\n")
+                    .append("      \"phoneHome\": \"" + pharmacy.getPhoneHome() + "\",\n")
+                    .append("      \"active\": " + pharmacy.isActive() + "\n")
                     .append("    }" + (iterator.hasNext() ? ",\n\n" : "\n"));
 
             lastUpdated = Math.max(lastUpdated, pharmacy.getLastUpdated());

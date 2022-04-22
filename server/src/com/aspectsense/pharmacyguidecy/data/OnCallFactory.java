@@ -2,6 +2,8 @@ package com.aspectsense.pharmacyguidecy.data;
 
 import com.aspectsense.pharmacyguidecy.OnCall;
 import com.google.appengine.api.datastore.*;
+import com.google.appengine.api.memcache.MemcacheService;
+import com.google.appengine.api.memcache.MemcacheServiceFactory;
 
 import java.util.Iterator;
 import java.util.Vector;
@@ -25,28 +27,36 @@ public class OnCallFactory
 
     static public OnCall getOnCallFromDate(final String dateS)
     {
-        // todo utilize MemcacheService
-        final Query.Filter filterDate = new Query.FilterPredicate(
-                OnCallFactory.PROPERTY_ON_CALL_DATE,
-                Query.FilterOperator.EQUAL,
-                dateS);
+        // utilize MemcacheService
+        final MemcacheService memcacheService = MemcacheServiceFactory.getMemcacheService();
 
-        final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-        final Query query = new Query(OnCallFactory.KIND);
-        // filter pharmacies last updated after 'from'
-        query.setFilter(filterDate);
-        final PreparedQuery preparedQuery = datastore.prepare(query);
-        final Iterable<Entity> iterable = preparedQuery.asIterable();
-        final Iterator<Entity> iterator = iterable.iterator();
-        Entity entity;
-        if((entity = iterator.next()) != null)
-        {
-            return OnCallFactory.getFromEntity(entity);
+        OnCall onCall = (OnCall) memcacheService.get("on-call-" + dateS);
+
+        if(onCall == null) {
+            final Query.Filter filterDate = new Query.FilterPredicate(
+                    OnCallFactory.PROPERTY_ON_CALL_DATE,
+                    Query.FilterOperator.EQUAL,
+                    dateS);
+
+            final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+            final Query query = new Query(OnCallFactory.KIND);
+            query.setFilter(filterDate);
+            final PreparedQuery preparedQuery = datastore.prepare(query);
+            final Iterable<Entity> iterable = preparedQuery.asIterable();
+            final Iterator<Entity> iterator = iterable.iterator();
+            Entity entity;
+            if((entity = iterator.next()) != null)
+            {
+                onCall = OnCallFactory.getFromEntity(entity);
+                memcacheService.put("on-call-" + dateS, onCall);
+            }
+            else
+            {
+                throw new IllegalArgumentException("Could not find an entity for date: " + dateS);
+            }
         }
-        else
-        {
-            throw new IllegalArgumentException("Could not find an entity for date: " + dateS);
-        }
+
+        return onCall;
     }
 
     static public OnCall getOnCall(final String keyAsString)
@@ -68,16 +78,27 @@ public class OnCallFactory
         }
     }
 
+    public static final String ALL_ON_CALLS = "all-on-calls";
+
     static public Vector<OnCall> getAllOnCalls()
     {
-        final Vector<OnCall> onCalls = new Vector<OnCall>();
+        final MemcacheService memcacheService = MemcacheServiceFactory.getMemcacheService();
 
-        final DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
-        final Query query = new Query(KIND).addSort(PROPERTY_ON_CALL_DATE);
-        final PreparedQuery preparedQuery = datastoreService.prepare(query);
-        for(final Entity entity : preparedQuery.asIterable())
-        {
-            onCalls.add(getFromEntity(entity));
+        Vector<OnCall> onCalls = (Vector<OnCall>) memcacheService.get(ALL_ON_CALLS);
+
+        if(onCalls == null) {
+
+            onCalls = new Vector<>();
+
+            final DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
+            final Query query = new Query(KIND).addSort(PROPERTY_ON_CALL_DATE);
+            final PreparedQuery preparedQuery = datastoreService.prepare(query);
+            for(final Entity entity : preparedQuery.asIterable())
+            {
+                onCalls.add(getFromEntity(entity));
+            }
+
+            memcacheService.put(ALL_ON_CALLS, onCalls);
         }
 
         return onCalls;
@@ -85,6 +106,9 @@ public class OnCallFactory
 
     static public Key addOnCall(final String date, final String pharmacies)
     {
+        final MemcacheService memcacheService = MemcacheServiceFactory.getMemcacheService();
+        memcacheService.delete(ALL_ON_CALLS);
+
         final DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
         final Entity cityEntity = new Entity(KIND);
         cityEntity.setProperty(PROPERTY_LAST_UPDATED, System.currentTimeMillis());
@@ -97,6 +121,9 @@ public class OnCallFactory
     static public Key editOnCall(final String uuid, final String date, final String pharmacies)
             throws EntityNotFoundException
     {
+        final MemcacheService memcacheService = MemcacheServiceFactory.getMemcacheService();
+        memcacheService.delete(ALL_ON_CALLS);
+
         final DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
         final Entity onCallEntity = datastoreService.get(KeyFactory.stringToKey(uuid));
 
@@ -119,6 +146,9 @@ public class OnCallFactory
 
     static public void deleteEntriesBefore(final String cutoffDate)
     {
+        final MemcacheService memcacheService = MemcacheServiceFactory.getMemcacheService();
+        memcacheService.delete(ALL_ON_CALLS);
+
         final DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
 
         final Query.Filter filter = new Query.FilterPredicate(PROPERTY_ON_CALL_DATE, Query.FilterOperator.LESS_THAN, cutoffDate);

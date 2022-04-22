@@ -55,23 +55,35 @@ public class LocalityFactory
         return locality;
     }
 
+    public static final String ALL_LOCALITIES = "all-localities";
+
     static public Vector<Locality> getAllLocalities()
     {
-        final Vector<Locality> localities = new Vector<Locality>();
+        Vector<Locality> localities = (Vector<Locality>) memcacheService.get(ALL_LOCALITIES);
 
-        final DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
-        final Query query = new Query(KIND).addSort(PROPERTY_LOCALITY_NAME_EL);
-        final PreparedQuery preparedQuery = datastoreService.prepare(query);
-        for(final Entity entity : preparedQuery.asIterable())
-        {
-            localities.add(getFromEntity(entity));
+        if(localities == null) {
+
+            localities = new Vector<>();
+
+            final DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
+            final Query query = new Query(KIND).addSort(PROPERTY_LOCALITY_NAME_EL);
+            final PreparedQuery preparedQuery = datastoreService.prepare(query);
+            for(final Entity entity : preparedQuery.asIterable())
+            {
+                localities.add(getFromEntity(entity));
+            }
+
+            memcacheService.put(ALL_LOCALITIES, localities);
         }
+
 
         return localities;
     }
 
     static public Key addLocality(final String nameEl, final String nameEn, final String cityUUID, final double lat, final double lng)
     {
+        memcacheService.delete(ALL_LOCALITIES);
+
         final DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
         final Entity localityEntity = new Entity(KIND);
         localityEntity.setProperty(PROPERTY_LOCALITY_NAME_EL, nameEl);

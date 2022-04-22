@@ -60,6 +60,7 @@ public class EditPharmacyServlet extends HttpServlet
                 final String localityUUID = request.getParameter(PharmacyFactory.PROPERTY_PHARMACY_LOCALITY_UUID);
                 final String phoneBusiness = request.getParameter(PharmacyFactory.PROPERTY_PHARMACY_PHONE_BUSINESS);
                 final String phoneHome = request.getParameter(PharmacyFactory.PROPERTY_PHARMACY_PHONE_HOME);
+                final boolean active = "on".equalsIgnoreCase(request.getParameter(PharmacyFactory.PROPERTY_PHARMACY_ACTIVE));
 
                 // if uuid is not empty, then EDIT, else ADD
                 if(uuid != null && !uuid.isEmpty())
@@ -67,7 +68,7 @@ public class EditPharmacyServlet extends HttpServlet
                     // edit rather than add
                     try
                     {
-                        PharmacyFactory.editPharmacy(uuid, ID, name_el, address, addressPostalCode, addressDetails, lat, lng, localityUUID, phoneBusiness, phoneHome);
+                        PharmacyFactory.editPharmacy(uuid, ID, name_el, address, addressPostalCode, addressDetails, lat, lng, localityUUID, phoneBusiness, phoneHome, active);
 
                         log("Edited " + PharmacyFactory.KIND + " with key: " + uuid);
 

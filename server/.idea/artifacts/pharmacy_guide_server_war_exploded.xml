@@ -8,10 +8,11 @@
           <element id="module-output" name="pharmacy-guide-server" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="application" name="AppEngine API 1.9.53" />
           <element id="library" level="project" name="com.google.appengine:appengine-api-1.0-sdk:Release" />
           <element id="library" level="project" name="com.google.code.gson:gson:2.8.5" />
           <element id="library" level="project" name="javax.servlet:servlet-api:2.5" />
+          <element id="library" level="project" name="AppEngine API" />
+          <element id="library" level="application" name="AppEngine API 1.9.63" />
         </element>
       </element>
     </root>

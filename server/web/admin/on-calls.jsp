@@ -4,6 +4,8 @@
 <%@ page import="com.aspectsense.pharmacyguidecy.Locality" %>
 <%@ page import="com.aspectsense.pharmacyguidecy.City" %>
 <%@ page import="com.aspectsense.pharmacyguidecy.data.*" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.text.ParseException" %>
 <%--
   Date: 8/16/12
   Time: 6:24 PM
@@ -37,6 +39,11 @@
 %>
     <h1>On Calls</h1>
 
+    <form action="/admin/on-calls">
+        <input type="checkbox" name="show-old" value="true" title="Show old entries"> Show old entries<br>
+        <input type="submit" value="Submit">
+    </form>
+
     <table border="1">
         <tr>
             <th>UUID</th>
@@ -65,6 +72,7 @@
             localityUuidToCity.put(locality.getUUID(), uuidToCitiesMap.get(locality.getCityUUID()));
         }
 
+        final boolean showOldValues = "true".equalsIgnoreCase(request.getParameter("show-old"));
         final Vector<OnCall> onCalls = OnCallFactory.getAllOnCalls();
         if(onCalls != null)
         {
@@ -75,14 +83,24 @@
                 idToPharmacyMap.put(pharmacy.getID(), pharmacy);
             }
 
+            final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            final Date now = new Date();
             for(final OnCall onCall : onCalls)
             {
+                final String dateS = onCall.getDate();
+                try {
+                    final Date date = simpleDateFormat.parse(dateS);
+                    if (date.before(now) && !showOldValues) continue; // skip old values if parameter set
+                } catch (ParseException pe) {
+                    // log?
+                }
+
                 final String uuid = onCall.getUUID();
 %>
         <tr>
             <td><a href="/admin/on-call?key=<%=uuid%>"><%= uuid.substring(uuid.length() - 8) %></a></td>
             <td><%= new Date(onCall.getLastUpdated()) %></td>
-            <td><%= onCall.getDate() %></td>
+            <td><%= dateS %></td>
             <td>
 <%
 

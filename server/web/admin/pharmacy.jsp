@@ -62,6 +62,7 @@
             <th>Locality</th>
             <th>Phone (business)</th>
             <th>Phone (home)</th>
+            <th>Active</th>
         </tr>
 <%
                 final double lat = pharmacy.getLat();
@@ -96,6 +97,7 @@
             <td> <a href="/admin/locality?key=<%= pharmacy.getLocalityUUID() %>"><%= localityUUIDtoNameEl.get(pharmacy.getLocalityUUID()) %></a></td>
             <td><%= pharmacy.getPhoneBusiness() %></td>
             <td><%= pharmacy.getPhoneHome() %></td>
+            <td><%= pharmacy.isActive() %></td>
         </tr>
     </table>
 
@@ -157,6 +159,10 @@
             <tr>
                 <td>Phone (home)</td>
                 <td><input type="text" name="<%= PharmacyFactory.PROPERTY_PHARMACY_PHONE_HOME%>" value="<%=pharmacy.getPhoneHome()%>"/></td>
+            </tr>
+            <tr>
+                <td>Active</td>
+                <td><input type="checkbox" name="<%= PharmacyFactory.PROPERTY_PHARMACY_ACTIVE%>" <%= pharmacy.isActive() ? "checked" : "" %> /></td>
             </tr>
         </table>
         <div><input type="submit" value="Edit Pharmacy" /></div>

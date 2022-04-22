@@ -21,11 +21,21 @@ public class Pharmacy implements Serializable
     private final double lng;
     private final String phone_business;
     private final String phone_home;
+    private final boolean active;
 
     public Pharmacy(final String uuid, final long lastUpdated, final String ID, final String name, final String address,
                     final String address_postal_code,
                     final String address_details, final String localityUUID, final double lat, final double lng,
                     final String phone_business, final String phone_home)
+    {
+        this(uuid, lastUpdated, ID, name, address, address_postal_code, address_details, localityUUID, lat, lng,
+                phone_business, phone_home, true);
+    }
+
+    public Pharmacy(final String uuid, final long lastUpdated, final String ID, final String name, final String address,
+                    final String address_postal_code,
+                    final String address_details, final String localityUUID, final double lat, final double lng,
+                    final String phone_business, final String phone_home, final boolean active)
     {
         this.uuid = uuid;
         this.lastUpdated = lastUpdated;
@@ -40,6 +50,7 @@ public class Pharmacy implements Serializable
         this.lng = lng;
         this.phone_business = phone_business;
         this.phone_home = phone_home;
+        this.active = active;
     }
 
     public String getUUID()
@@ -100,5 +111,9 @@ public class Pharmacy implements Serializable
     public String getPhoneHome()
     {
         return phone_home;
+    }
+
+    public boolean isActive() {
+        return active;
     }
 }

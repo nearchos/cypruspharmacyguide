@@ -1,8 +1,11 @@
 package com.aspectsense.pharmacyguidecy.data;
 
 import com.google.appengine.api.datastore.*;
+import com.google.appengine.api.memcache.MemcacheService;
+import com.google.appengine.api.memcache.MemcacheServiceFactory;
 
 import java.util.Iterator;
+import java.util.Vector;
 import java.util.logging.Logger;
 
 /**
@@ -20,8 +23,29 @@ public class ParameterFactory
     public static final String PROPERTY_PARAMETER_NAME = "name";
     public static final String PROPERTY_PARAMETER_VALUE = "value";
 
+    private static final MemcacheService memcacheService = MemcacheServiceFactory.getMemcacheService();
+    private static final DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
+
+    public static final String ALL_PARAMETERS = "ALL_PARAMETERS";
+
+    public static Vector<Parameter> getAllParameters() {
+        if(memcacheService.contains(ALL_PARAMETERS)) {
+            return (Vector<Parameter>) memcacheService.get(ALL_PARAMETERS);
+        } else {
+            final Query query = new Query(KIND).addSort(PROPERTY_PARAMETER_NAME);
+            final PreparedQuery preparedQuery = datastoreService.prepare(query);
+            final Vector<Parameter> parameters = new Vector<>();
+            for(final Entity entity : preparedQuery.asIterable()) {
+                parameters.add(getFromEntity(entity));
+            }
+
+            memcacheService.put(ALL_PARAMETERS, parameters);
+
+            return parameters;
+        }
+    }
+
 //    static public Parameter getParameter(final String keyAsString) {
-//        final DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
 //        try {
 //            final Entity parameterEntity = datastoreService.get(KeyFactory.stringToKey(keyAsString));
 //            return getFromEntity(parameterEntity);
@@ -40,11 +64,10 @@ public class ParameterFactory
                 Query.FilterOperator.EQUAL,
                 name);
 
-        final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         final Query query = new Query(KIND);
         // filter pharmacies last updated after 'from'
         query.setFilter(filterName);
-        final PreparedQuery preparedQuery = datastore.prepare(query);
+        final PreparedQuery preparedQuery = datastoreService.prepare(query);
         final Iterable<Entity> iterable = preparedQuery.asIterable();
         final Iterator<Entity> iterator = iterable.iterator();
         Entity entity;
@@ -61,7 +84,6 @@ public class ParameterFactory
                 Query.FilterOperator.EQUAL,
                 name);
 
-        final DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
         final Query query = new Query(KIND);
         // filter pharmacies last updated after 'from'
         query.setFilter(filterName);

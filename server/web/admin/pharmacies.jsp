@@ -79,6 +79,7 @@
             <th>Locality</th>
             <th>Phone (business)</th>
             <th>Phone (home)</th>
+            <th>Active</th>
         </tr>
 <%
         if(pharmacies != null)
@@ -118,6 +119,7 @@
             <td> <a href="/admin/locality?key=<%= pharmacy.getLocalityUUID() %>"><%= localityUUIDtoNameEl.get(pharmacy.getLocalityUUID()) %></a></td>
             <td><%= pharmacy.getPhoneBusiness() %></td>
             <td><%= pharmacy.getPhoneHome() %></td>
+            <td><%= pharmacy.isActive() ? "<p style='color:green'>active</p>" : "<p style='color:red'>inactive</p>" %></td>
         </tr>
 <%
             }
@@ -179,6 +181,10 @@
             <tr>
                 <td>Phone (home)</td>
                 <td><input type="text" name="<%= PharmacyFactory.PROPERTY_PHARMACY_PHONE_HOME%>" /></td>
+            </tr>
+            <tr>
+                <td>Active</td>
+                <td><input type="hidden" name="<%= PharmacyFactory.PROPERTY_PHARMACY_ACTIVE%>" value="true"/>true</td>
             </tr>
         </table>
         <div><input type="submit" value="Add Pharmacy" /></div>
