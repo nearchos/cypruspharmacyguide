@@ -20,7 +20,10 @@ import java.util.List;
 @Dao
 public interface CPGDao  {
 
-    @Query("SELECT * FROM room_pharmacies")
+    @Query("SELECT COUNT(*) FROM room_pharmacies WHERE active=1")
+    int countActivePharmacies();
+
+    @Query("SELECT * FROM room_pharmacies WHERE active=1")
     LiveData<List<Pharmacy>> getAllPharmacies();
 
     @Query("SELECT * FROM room_pharmacies WHERE id=:id")
@@ -40,9 +43,6 @@ public interface CPGDao  {
 
     @Query("SELECT * FROM room_pharmacies WHERE id IN (SELECT pharmacy_id FROM room_dates_to_pharmacies WHERE date=:dateAsString)")
     LiveData<List<Pharmacy>> getPharmaciesOnCall(final String dateAsString);
-
-//    @Query("SELECT * FROM dates_to_pharmacies WHERE pharmacy_id=:pharmacyId")
-//    LiveData<List<DateToPharmacy>> getDatesToPharmacy(final int pharmacyId);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(final City... cities);

@@ -21,9 +21,9 @@ import java.util.Locale;
         indices = { @Index("date"), @Index("pharmacy_id") })
 public class DateToPharmacy {
 
-    @PrimaryKey(autoGenerate = true) private long _id;
-    @NonNull private String date;
-    @ColumnInfo(name = "pharmacy_id") private int pharmacyId;
+    @PrimaryKey(autoGenerate = true) private final long _id;
+    @NonNull private final String date;
+    @ColumnInfo(name = "pharmacy_id") private final int pharmacyId;
 
     DateToPharmacy(final long _id, final @NonNull String date, final int pharmacyId) {
         this._id = _id;

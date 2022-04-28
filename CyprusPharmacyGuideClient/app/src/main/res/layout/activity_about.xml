@@ -32,7 +32,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/activity_info_summer_icon"
+                        android:id="@+id/activity_info_icon"
                         android:paddingStart="8dp"
                         android:paddingEnd="8dp"
                         android:layout_width="64dp"
@@ -44,14 +44,14 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/activity_info_summer_title"
+                        android:id="@+id/activity_info_title"
                         style="@style/Base.TextAppearance.AppCompat.Title"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:text="@string/app_name"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/activity_info_summer_icon"
+                        app:layout_constraintStart_toEndOf="@+id/activity_info_icon"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
@@ -61,8 +61,58 @@
                         android:layout_margin="10dp"
                         android:text="@string/application_url"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/activity_info_summer_icon"
-                        app:layout_constraintTop_toBottomOf="@+id/activity_info_summer_title" />
+                        app:layout_constraintStart_toEndOf="@+id/activity_info_icon"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_info_title" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/activity_database_icon"
+                        android:src="@drawable/ic_store_black_24"
+                        app:tint="@color/pharmacy_green"
+                        android:contentDescription="@string/app_name"
+                        android:layout_marginEnd="10dp"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:layout_width="64dp"
+                        android:layout_height="48dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/activity_database_title"
+                        android:text="@string/Pharmacies_database"
+                        style="@style/Base.TextAppearance.AppCompat.Title"
+                        android:layout_marginStart="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/activity_database_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/database_info_text_view"
+                        android:text="@string/database_info"
+                        style="@style/Base.TextAppearance.AppCompat.Small"
+                        android:layout_marginStart="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/activity_database_icon"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_database_title" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -83,7 +133,7 @@
                     <ImageView
                         android:id="@+id/activity_about_developer_icon"
                         android:src="@drawable/ic_build_black_24dp"
-                        android:tint="@color/pharmacy_green"
+                        app:tint="@color/pharmacy_green"
                         android:contentDescription="@string/app_name"
                         android:layout_marginEnd="10dp"
                         android:paddingStart="16dp"
@@ -133,7 +183,7 @@
                     <ImageView
                         android:id="@+id/activity_about_version_icon"
                         android:src="@drawable/ic_code_black_24dp"
-                        android:tint="@color/pharmacy_green"
+                        app:tint="@color/pharmacy_green"
                         android:contentDescription="@string/app_name"
                         android:layout_marginEnd="10dp"
                         android:paddingStart="16dp"
@@ -185,7 +235,7 @@
                     <ImageView
                         android:id="@+id/activity_about_rate_icon"
                         android:src="@drawable/ic_favorite_black_24dp"
-                        android:tint="@color/pharmacy_green"
+                        app:tint="@color/pharmacy_green"
                         android:contentDescription="@string/app_name"
                         android:layout_marginEnd="10dp"
                         android:paddingStart="16dp"
@@ -236,7 +286,7 @@
                     <ImageView
                         android:id="@+id/activity_about_share_icon"
                         android:src="@drawable/ic_share_black_24dp"
-                        android:tint="@color/pharmacy_green"
+                        app:tint="@color/pharmacy_green"
                         android:contentDescription="@string/app_name"
                         android:layout_marginEnd="10dp"
                         android:paddingStart="16dp"

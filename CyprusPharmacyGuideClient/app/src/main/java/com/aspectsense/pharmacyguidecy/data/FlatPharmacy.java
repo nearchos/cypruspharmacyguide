@@ -10,20 +10,20 @@ import java.io.Serializable;
  */
 public class FlatPharmacy implements Serializable {
 
-    private int id;
-    private String name;
-    private String nameEn;
-    private String address;
-    private String addressPostalCode;
-    private String addressDetails;
-    private float lat;
-    private float lng;
-    private String localityNameEl;
-    private String localityNameEn;
-    private String cityNameEl;
-    private String cityNameEn;
-    private String phoneBusiness;
-    private String phoneHome;
+    private final int id;
+    private final String name;
+    private final String nameEn;
+    private final String address;
+    private final String addressPostalCode;
+    private final String addressDetails;
+    private final float lat;
+    private final float lng;
+    private final String localityNameEl;
+    private final String localityNameEn;
+    private final String cityNameEl;
+    private final String cityNameEn;
+    private final String phoneBusiness;
+    private final String phoneHome;
 
     public FlatPharmacy(int id, String name, String nameEn, String address, String addressPostalCode, String addressDetails, float lat, float lng, String localityNameEl, String localityNameEn, String cityNameEl, String cityNameEn, String phoneBusiness, String phoneHome) {
         this.id = id;

@@ -13,12 +13,12 @@ import com.google.gson.annotations.SerializedName;
 @Entity(tableName = "room_localities")
 public class Locality implements Place {
 
-    @SerializedName("UUID") @PrimaryKey @NonNull private String uuid;
-    private String nameEl;
-    private String nameEn;
-    private float lat;
-    private float lng;
-    @SerializedName("cityUUID") private String cityUuid;
+    @SerializedName("UUID") @PrimaryKey @NonNull private final String uuid;
+    private final String nameEl;
+    private final String nameEn;
+    private final float lat;
+    private final float lng;
+    @SerializedName("cityUUID") private final String cityUuid;
 
     public Locality(@NonNull String uuid, @NonNull String nameEl, @NonNull String nameEn, float lat, float lng, @NonNull String cityUuid) {
         this.uuid = uuid;

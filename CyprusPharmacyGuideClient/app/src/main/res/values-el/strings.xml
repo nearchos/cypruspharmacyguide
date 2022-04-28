@@ -52,4 +52,10 @@
     <string name="Install">Κατέβασε τον Οδηγό Φαρμακείων Κύπρου και βρες τα πιο βολικά φαρμακεία στην Κύπρο. Κατέβασε το δωρεάν από το Google Play στο https://play.google.com/store/apps/details?id=com.aspectsense.pharmacyguidecy</string>
     <string name="Share">Μοιράστου το</string>
     <string name="No_apps_available_for_sharing">Δεν βρέθηκε εφαρμογή για μοίρασμα</string>
+
+    <string name="Dismiss">Κλείσιμο</string>
+    <string name="Pharmacies_database">Δεδομένα φαρμακείων</string>
+    <string name="database_info">Πληροφορίες για δεδομένα εφαρμογής</string>
+    <string name="pharmacies_info">Περιέχει %1$d ενεργά φαρμακεία.</string>
+
 </resources>

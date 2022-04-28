@@ -15,11 +15,11 @@ import java.util.Objects;
 @Entity(tableName = "room_cities")
 public class City implements Place {
 
-    @SerializedName("UUID") @PrimaryKey  @NonNull private String uuid;
-    private String nameEn;
-    private String nameEl;
-    private float lat;
-    private float lng;
+    @SerializedName("UUID") @PrimaryKey  @NonNull private final String uuid;
+    private final String nameEn;
+    private final String nameEl;
+    private final float lat;
+    private final float lng;
 
     public City(@NonNull String uuid, @NonNull String nameEl, @NonNull String nameEn, float lat, float lng) {
         this.uuid = uuid;

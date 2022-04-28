@@ -70,9 +70,9 @@ public class PlaceRecyclerAdapter
 
     private final Activity activity;
 
-    private SharedPreferences sharedPreferences;
+    private final SharedPreferences sharedPreferences;
     private final LayoutInflater layoutInflater;
-    private List<Place> places = new ArrayList<>(); // Cached copy of pharmacies
+    private final List<Place> places = new ArrayList<>(); // Cached copy of pharmacies
 
     PlaceRecyclerAdapter(final Activity activity) {
         this.activity = activity;

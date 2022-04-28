@@ -14,11 +14,11 @@ public class FlatPharmacyAsStructuredData {
     @SerializedName("@type")
     private final String type = "pharmacy";
     @SerializedName("@id")
-    private String id;
-    private String name;
-    private Address address;
-    private String telephone;
-    private Geo geo;
+    private final String id;
+    private final String name;
+    private final Address address;
+    private final String telephone;
+    private final Geo geo;
 
     public FlatPharmacyAsStructuredData(final FlatPharmacy flatPharmacy) {
         this.id = "http://cypruspharmacyguide.com/pharmacy/" + flatPharmacy.getId();

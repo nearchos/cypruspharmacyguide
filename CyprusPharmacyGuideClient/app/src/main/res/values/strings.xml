@@ -60,4 +60,9 @@
     <string name="Share">Share</string>
     <string name="No_apps_available_for_sharing">No apps available for sharing</string>
 
+    <string name="Dismiss">Dismiss</string>
+    <string name="Pharmacies_database">Database</string>
+    <string name="database_info">Information about app data</string>
+    <string name="pharmacies_info">Contains %1$d active pharmacies</string>
+
 </resources>

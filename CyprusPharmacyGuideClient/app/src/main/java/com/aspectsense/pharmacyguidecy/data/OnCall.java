@@ -24,8 +24,8 @@ public class OnCall {
 
     public static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
 
-    @NonNull private String date;
-    private String pharmacies;
+    @NonNull private final String date;
+    private final String pharmacies;
 
     public OnCall(@NonNull String date, @NonNull String pharmacies) {
         this.date = date;

@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.aspectsense.pharmacyguidecy",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 62,
+      "versionName": "7.6.0-62-2022.04.28",
+      "outputFile": "app-release.apk"
+    }
+  ],
+  "elementType": "File"
+}

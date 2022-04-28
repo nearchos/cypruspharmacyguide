@@ -18,20 +18,21 @@ import java.util.Objects;
 @Entity(tableName = "room_pharmacies")
 public class Pharmacy implements Place {
 
-    @SerializedName("ID") @PrimaryKey private int id;
-    private String name;
-    private String address;
-    private String addressPostalCode;
-    private String addressDetails;
-    private float lat;
-    private float lng;
-    @SerializedName("localityUUID") @ColumnInfo(name = "locality_uuid") private String localityUuid;
-    private String phoneBusiness;
-    private String phoneHome;
+    @SerializedName("ID") @PrimaryKey private final int id;
+    private final String name;
+    private final String address;
+    private final String addressPostalCode;
+    private final String addressDetails;
+    private final float lat;
+    private final float lng;
+    @SerializedName("localityUUID") @ColumnInfo(name = "locality_uuid") private final String localityUuid;
+    private final String phoneBusiness;
+    private final String phoneHome;
+    private final boolean active;
 
-    @Ignore private transient String searchableName;
+    @Ignore private final transient String searchableName;
 
-    public Pharmacy(int id, @NonNull String name, @NonNull String address, @NonNull String addressPostalCode, @NonNull String addressDetails, float lat, float lng, @NonNull String localityUuid, @NonNull String phoneBusiness, @NonNull String phoneHome) {
+    public Pharmacy(int id, @NonNull String name, @NonNull String address, @NonNull String addressPostalCode, @NonNull String addressDetails, float lat, float lng, @NonNull String localityUuid, @NonNull String phoneBusiness, @NonNull String phoneHome, boolean active) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -42,6 +43,7 @@ public class Pharmacy implements Place {
         this.localityUuid = localityUuid;
         this.phoneBusiness = phoneBusiness;
         this.phoneHome = phoneHome;
+        this.active = active;
 
         this.searchableName = Greeklish.removeAccents(name.toLowerCase()) + Greeklish.toGreeklish(name.toLowerCase());
     }
@@ -92,6 +94,10 @@ public class Pharmacy implements Place {
 
     public String getPhoneHome() {
         return phoneHome;
+    }
+
+    public boolean isActive() {
+        return active;
     }
 
     public String getSearchableName() {

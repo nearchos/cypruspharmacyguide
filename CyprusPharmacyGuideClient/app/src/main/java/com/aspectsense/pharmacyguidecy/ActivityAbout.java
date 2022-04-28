@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.concurrent.Executors;
+
 public class ActivityAbout extends AppCompatActivity {
 
     private CoordinatorLayout coordinatorLayout;
@@ -39,6 +41,13 @@ public class ActivityAbout extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+
+        final TextView databaseInfoTextView = findViewById(R.id.database_info_text_view);
+        CPGDao cpgDao = CPGDatabase.getDatabase(this).cpgDao();
+        Executors.newSingleThreadExecutor().execute(() -> {
+            final int numOfActivePharmacies = cpgDao.countActivePharmacies();
+            databaseInfoTextView.setText(getString(R.string.pharmacies_info, numOfActivePharmacies));
+        });
     }
 
     @Override

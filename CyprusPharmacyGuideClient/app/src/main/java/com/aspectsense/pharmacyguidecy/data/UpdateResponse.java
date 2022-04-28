@@ -10,12 +10,12 @@ import com.google.gson.annotations.SerializedName;
  */
 public class UpdateResponse {
 
-    private String status;
-    private City [] cities;
-    private Locality [] localities;
-    private Pharmacy [] pharmacies;
-    @SerializedName("on-calls") private OnCall [] onCalls;
-    private long lastUpdated;
+    private final String status;
+    private final City [] cities;
+    private final Locality [] localities;
+    private final Pharmacy [] pharmacies;
+    @SerializedName("on-calls") private final OnCall [] onCalls;
+    private final long lastUpdated;
 
     public UpdateResponse(String status, City[] cities, Locality[] localities, Pharmacy[] pharmacies, OnCall [] onCalls, long lastUpdated) {
         this.status = status;
